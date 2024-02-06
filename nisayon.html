@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show/Hide Div</title>
+    <style>
+        .t1 {
+            display: none; /* Initially hide the div */
+        }
+    </style>
+</head>
+<body>
+
+    <button id="showButton">Show Div</button>
+    <div class="t1" id="targetDiv">This is the target div</div>
+
+    <script>
+        // Get references to the button and the target div
+        var showButton = document.getElementById('showButton');
+        var targetDiv = document.getElementById('targetDiv');
+
+        // Add a click event listener to the button
+        showButton.addEventListener('click', function() {
+            // Toggle the visibility of the target div
+            if (targetDiv.style.display === 'none') {
+                targetDiv.style.display = 'block';
+            } else {
+                targetDiv.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

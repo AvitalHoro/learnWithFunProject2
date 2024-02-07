@@ -23,7 +23,7 @@
         <img class="logo-img-header" src="img/logo.png" alt="לומדים בכיף" href="#">
         <div class="search-header-section">
             <h3 class="search-header-text">מה תרצה ללמוד היום?</h3>
-            <input type="text" class="search-box glowing-border" placeholder="חיפוש...">
+            <input type="text" class="search-box glowing-border" id="searchInput"  placeholder="חיפוש...">
 
         </div>
         <div class="links-header-section container">
@@ -36,6 +36,13 @@
         </div>
         <img class="profile-img-header grow-on-hover" id="profile-img-header" src="/img/girl_profile.png" alt="פרופיל">
     </header>
+    <div id="overlay" class="overlay"></div>
+
+    <div class="popup" id="not-valid-popup">
+        <img class="not-valid-img"  src="/img/not_valid.png" alt="כפתור זה אינו זמין">
+        <button class="back-to-website-button glowing-border">חזרה לאתר ></button>
+
+    </div>
 
     <div class="side-profile" id="side-profile">
 
@@ -43,32 +50,9 @@
     <div class="main-div">
         <main class="main">
             <!--========== HOME ==========-->
-            <img class="main-img" src="img/home_img.png" alt="אז מה לומדים היום?">
-            <div class="items-grid">
-                <div class="game-item grow-on-hover">
-                    <img class="game-item-img" src="img/english.png" alt="">
-                    <button class="game-item-button glowing-border">עברית</button>
-                </div>
-                <div class="game-item grow-on-hover">
-                    <img class="game-item-img" src="img/english.png" alt="">
-                    <button class="game-item-button glowing-border">עברית</button>
-                </div>
-                <div class="game-item grow-on-hover">
-                    <img class="game-item-img" src="img/english.png" alt="">
-                    <button class="game-item-button glowing-border">עברית</button>
-                </div>
-                <div class="game-item grow-on-hover">
-                    <img class="game-item-img" src="img/english.png" alt="">
-                    <button class="game-item-button glowing-border">עברית</button>
-                </div>
-                <div class="game-item grow-on-hover">
-                    <img class="game-item-img" src="img/english.png" alt="">
-                    <button class="game-item-button glowing-border">עברית</button>
-                </div>
-                <div class="game-item grow-on-hover">
-                    <img class="game-item-img" src="img/english.png" alt="">
-                    <button class="game-item-button glowing-border">עברית</button>
-                </div>
+            <img  class="main-img" src="img/home_img.png" alt="אז מה לומדים היום?">
+            <div class="items-grid" id="items-grid">
+                <!--All the options for the learning games will appear here -->
             </div>
         </main>
     </div>

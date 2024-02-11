@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--========== BOX ICONS ==========-->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="../css/hebrew.css">
+
+    <link rel="icon" href="..\img\kettleFavicon.png" type="image/x-icon">
+    <title>לומדים עברית בכיף</title>
+</head>
+
+
+<body>
+    <header>
+        <nav>
+
+        </nav>
+    </header>
+    <main class="main">
+        <div id="playerDetails-div">
+            <a id="home" href="/index.html" target="_parent">
+                <button id="home-button">חזרה לדף הבית</button>
+            </a>
+            <p id="stage-label"></p>
+            <p id="player-name">יוסי כהן</p>
+            <p id="player-level">רמה X</p>
+            <p id="player-points-label">ניקוד שצברתי</p>
+            <p id="player-points">26</p>
+            <p id="player-rate-label">מדורג במקום ה <span id="player-rate">8</span></p>
+
+
+        </div>
+        <div class="container">
+            <p>עליכם ללחוץ על התמונה המתאימה למילה המופיעה למטה. בהצלחה!</p>
+            <div id="gameScreen">
+                <div id="images-div"> </div>
+                <div id="success-div">
+                    <span>כל הכבוד</span>
+                    <button id="nextLevelButton" onclick="nextStage()">לשלב הבא</button>
+                </div>
+                <div id="gameOver-div">
+                    <span>לא הצלחת הפעם</span>
+                    <button id="tryAgainButton" onclick="startClick()">נסה שוב</button>
+                </div>
+                <div id="nextLevel-div">
+                    <p id="nextLevText-span"></p>
+                    <button id="nextLeButton" onclick="startClick()">להמשיך לרמה הבאה</button>
+                </div>
+                <button id="start-button" onclick="startClick()">
+                    <span class="buttonText">התחל</span>
+                    <img src="/img/start.png" alt="startIcon" class="startIcon">
+                </button>
+
+
+                <div id="word-div"> </div>
+            </div>
+            <div class="hiding-div"></div>
+        </div>
+
+    </main>
+    <footer>
+
+    </footer>
+</body>
+<script src="/js/hebrew.js"></script>
+
+</html>

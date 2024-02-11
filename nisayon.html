@@ -6,34 +6,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Popup Modal Box</title> 
-<style>.container {
-    position: relative;
-    width: 300px; /* Set the width of your container */
-    height: 400px; /* Set the height of your container */
-    border: 1px solid #ccc;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  img {
-    max-width: 100%;
-    max-height: calc(100% - 30px); /* Adjusted to account for button's height and margin */
-  }
-  
-  button {
-    position: absolute;
-    bottom: 15px; /* Distance from bottom */
-  }</style>
+<style>
+.grid-container {
+    margin-left: 400px;
+    margin-right: 30px;
+  display: grid;
+  grid-template-columns: minmax(500px, 1fr) auto; /* The central div takes at least 500px and expands if there's more space */
+  grid-template-rows: 2fr 1fr; /* The height ratio of upper-right to lower-right div */
+  height: 100vh; /* Take full height of viewport */
+}
+
+.central-div {
+  grid-column: 1; /* Place in the first column */
+  grid-row: 1 / span 2; /* Span two rows */
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+}
+
+.right-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.upper-right {
+  flex: 2; /* Occupy 2 out of 3 of the available height */
+  background-color: lightgreen;
+}
+
+.lower-right {
+  flex: 1; /* Occupy 1 out of 3 of the available height */
+  background-color: lightyellow;
+}
+
+  </style>
      <!-- Fontawesome CDN Link -->
 </head>
 <body>
 
-    <div class="container">
-        <img src="/img/boy_profile.png" alt="Your Image">
-        <button>Button</button>
+    <div class="grid-container">
+        <div class="central-div">Central Div</div>
+        <div class="right-div">
+          <div class="upper-right">Upper Right Div</div>
+          <div class="lower-right">Lower Right Div</div>
+        </div>
       </div>
+      
     <script>var courses = [
         { name: "Mathematics", imageUrl: "math.jpg" },
         { name: "Physics", imageUrl: "physics.jpg" },

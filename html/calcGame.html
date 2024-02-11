@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="../css/calcGame.css">
+
+    <script src="https://kit.fontawesome.com/66b0994ad9.js" crossorigin="anonymous"></script>
+
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
+    <title>המחשבון שלי</title>
+</head>
+
+<body>
+    <div class="calculator" dir="ltr">
+        <div class="hedaer-calc-screen">
+            <h1 class="the-exercise">5 <i class="fa-solid fa-xmark"></i> 6 <i class="fa-solid fa-equals"></i> 7</h1>
+        </div>
+        <div class="calc-face">
+            <img class="img-face" src="/img/calc_face.png" alt="">
+            <!-- <div class="eye"><div class="pupil"></div></div>
+            <div class="eye"><div class="pupil"></div></div> -->
+        </div>
+        <div class="calc-buttons">
+            <!--here all buttons-->
+            <button class="digit-button">1</button>
+            <button class="digit-button">2</button>
+            <button class="digit-button">3</button>
+            <button class="action-button"><i class="fa-solid fa-plus"></i></button>
+            <button class="digit-button">4</button>
+            <button class="digit-button">5</button>
+            <button class="digit-button">6</button>
+            <button class="action-button"><i class="fa-solid fa-minus"></i></button>
+            <button class="digit-button">7</button>
+            <button class="digit-button">8</button>
+            <button class="digit-button">9</button>
+            <button class="action-button"><i class="fa-solid fa-xmark"></i></button>
+            <button class="digit-button">0</button>
+            <button class="equal-button"><i class="fa-solid fa-equals"></i></button>
+            <button class="action-button"><i class="fa-solid fa-divide"></i></button>
+        </div>
+    </div>
+
+    <div class="speech-ballon">
+        <img src="/img/speach_bubble.png" alt="בועית דיבור">
+        <div class="speech-div">
+            <div class="start-game">
+                <h1 id="start_game_text">
+                    <!-- שלום Name <br>
+            רוצה להתחיל לשחק? -->
+                </h1>
+                <button class="speech-button">כן!</button>
+            </div>
+
+            <div></div>
+
+        </div>
+    </div>
+
+    <div class="star-container">
+        <!-- <span class="star"></span> -->
+
+        <!--here five star-->
+        <img src="/img/star.png" alt="כוכב" class="star star-entry">
+        <img src="/img/star.png" alt="כוכב" class="star">
+        <img src="/img/star.png" alt="כוכב" class="star">
+        <img src="/img/star.png" alt="כוכב" class="star">
+        <img src="/img/star.png" alt="כוכב" class="star">
+
+    </div>
+    <script src="/js/calcGame.js"></script>
+
+</body>
+
+</html>

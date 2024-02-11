@@ -72,8 +72,6 @@ searchInput.addEventListener('input', function() {
 
 renderCourses('');
 
-
-// var popup = document.getElementById('not-valid-popup');
 var overlay = document.getElementById('overlay')
 
 function openPopup(popupId) {
@@ -88,18 +86,8 @@ function closePopup(popupId) {
     overlay.style.display = 'none';
 
 }
-// var buttons = document.getElementsByClassName('not-valid-button');
-// for (var i = 0; i < buttons.length; i++) {
-//     buttons[i].addEventListener('click', openPopup);
-// }
-
-// var buttons = document.getElementsByClassName('back-to-website-button');
-// for (var i = 0; i < buttons.length; i++) {
-//     buttons[i].addEventListener('click', closePopup);
-// }
 
 document.addEventListener('click', function(event) {
-    // var popupId=document.getElementById('not-valid-popup');
     if (event.target.classList.contains('not-valid-button')) {
         openPopup('not-valid-popup');
     } else if (event.target.classList.contains('back-to-website-button')) {

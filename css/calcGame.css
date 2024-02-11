@@ -1,0 +1,211 @@
+/*===== GOOGLE FONTS =====*/
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Rubik:wght@300;400;500;600&family=Varela+Round&display=swap');
+
+:root {
+  
+    /*========== Colors ==========*/
+    --background-color: #E6E6E6;
+    --button-color: #EA3546;
+    --hover-button-color: #ee5e6d;
+
+    --color1: #5575B4;
+    --color2: #662E9B;
+    --color3: #A83271;
+    --color4: #EA3546;
+    --color5: #F86624;
+    --color6: #F9C80E;
+    --text-gray-color: #898989;
+
+    /*========== Font and typography ==========*/
+    --body-font: 'Fredoka', sans-serif;
+
+    --header-height: 95px;
+}
+
+body {
+    margin: 0px;
+    font-family: var(--body-font);
+    background-color: var(--background-color);
+
+}
+div {
+    font-family: var(--body-font);
+}
+
+/* .main-grid {
+    display: grid;
+    grid-template-columns: 2fr, 1fr;
+} */
+
+button {
+    font-family: var(--body-font);
+}
+
+.calculator {
+    height: 500px;
+    width: 380px;
+    background-color: var(--color5);
+    border-radius: 40px;
+    position: fixed;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%) rotate(0.007turn);
+    text-align: center;
+    padding: 40px;
+    padding-bottom: 10px;
+    transition: transform 1s;
+    box-shadow: 5px 10px 30px 10px rgba(0, 0, 0, .6);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    border-color: #ca5017;
+    border-style: solid;
+    border-width: 4px;
+}
+
+.hedaer-calc-screen {
+    height: 80px;
+    width: 100%;
+    background-color: var(--color2);
+    border-radius: 20px;
+    border-color: #331550;
+    border-style: solid;
+    /* box-shadow: 5px 10px 30px 10px rgba(0, 0, 0, .6); */
+    text-align: start;
+    padding-left: 20px;
+    padding-right: 20px;
+justify-content: center;    
+}
+
+.the-exercise {
+    font-size: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 100%;
+    align-items: center; /* Center content vertically */
+    padding-top: 12px;
+}
+
+.calc-face {
+    position: relative;
+    top: -10px;
+    height: 90px;
+    width: 300px;
+    z-index: 200;
+    bottom: 50px;
+    text-align: center;
+}
+
+.eye {
+    border-radius: 100%;
+    background-color: white;
+    height: 50px;
+    width: 50px;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Creates 4 columns */
+    grid-gap: 10px 20px;
+    justify-content: center; /* Centers the buttons horizontally */
+}
+
+.digit-button {
+    height: 70px;
+    width: 75px;
+    border-radius: 50px;
+    background-color: var(--color6);
+    border-color: #b48e05;
+    border-style: solid;
+    font-size: 260%;
+    color: var(--color2);
+    font-weight: bolder;
+
+}
+
+.action-button {
+    height: 70px;
+    width: 75px;
+    border-radius: 50px;
+    background-color: var(--color1);
+    border-color:#324b7c;
+    border-style: solid;
+    font-size: 260%;
+    font-weight: bolder;
+ 
+}
+
+.equal-button {
+    grid-column: span 2;
+    border-radius: 50px;
+    background-color: var(--color1);
+    border-color:#324b7c;
+    border-style: solid;
+    font-size: 260%;
+    font-weight: bolder;
+}
+
+.img-face {
+    height: 100px;
+}
+
+.star-container {
+    /* display: inline-block; Display as inline block to arrange stars horizontally */
+    position: fixed; /* Position the container */
+    bottom: 30px; /* Distance from the bottom of the screen */
+    right: 30px; /* Distance from the right side of the screen */
+}
+
+.star {
+    height: 60px;
+    margin-right: 10px;
+}
+
+/* .star-entry {
+    transform: rotate(0.5turn) scale(6);
+} */
+
+.speech-ballon {
+    position: fixed;
+    left: calc(40% + 300px);
+    top: 150px;
+}
+
+.speech-div {
+    border-radius: 100%;
+    /* background-color: rgba(0, 0, 0, .6); */
+    position: absolute; /* Position the objects absolutely within the container */
+    top: 0; /* Place all objects at the top of the container */
+    left: 0; /* Align all objects to the left of the container */
+    width: 100%; /* Make the objects full-width */
+    height: 100%; /* Make the objects full-height */
+    text-align: center;
+width:330px;
+height: 240px;
+margin-top: 30px;
+margin-left: 24px;
+transform: rotate(0.01turn);
+
+}
+
+.speech-button {
+    width: 70px;
+    height: 50px;
+    background-color: #5A8D48;
+    border-radius: 25px;
+    font-size: 150%;
+    cursor: pointer;
+}
+
+.speech-button :hover {
+    background-color: #87b875;
+}
+
+.start-game {
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    height: 100%; /* Full height of the viewport */
+}

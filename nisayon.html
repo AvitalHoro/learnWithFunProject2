@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Popup Modal Box</title> 
+<style>.container {
+    position: relative;
+    width: 300px; /* Set the width of your container */
+    height: 400px; /* Set the height of your container */
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  img {
+    max-width: 100%;
+    max-height: calc(100% - 30px); /* Adjusted to account for button's height and margin */
+  }
+  
+  button {
+    position: absolute;
+    bottom: 15px; /* Distance from bottom */
+  }</style>
+     <!-- Fontawesome CDN Link -->
+</head>
+<body>
+
+    <div class="container">
+        <img src="/img/boy_profile.png" alt="Your Image">
+        <button>Button</button>
+      </div>
+    <script>var courses = [
+        { name: "Mathematics", imageUrl: "math.jpg" },
+        { name: "Physics", imageUrl: "physics.jpg" },
+        { name: "Biology", imageUrl: "biology.jpg" },
+        // Add more courses as needed
+    ];
+    
+    // Function to render the list of courses
+    function renderCourses(filter) {
+        var courseList = document.getElementById('courseList');
+        courseList.innerHTML = ''; // Clear previous content
+    
+        courses.forEach(function(course) {
+            if (course.name.toLowerCase().startsWith(filter.toLowerCase())) {
+                var courseDiv = document.createElement('div');
+                courseDiv.classList.add('course');
+    
+                var img = document.createElement('img');
+                img.src = course.imageUrl;
+                img.alt = course.name;
+    
+                var button = document.createElement('button');
+                button.textContent = course.name;
+                
+                courseDiv.appendChild(img);
+                courseDiv.appendChild(button);
+                courseList.appendChild(courseDiv);
+            }
+        });
+    }
+    
+    // Event listener for search input
+    var searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function() {
+        renderCourses(this.value.trim());
+    });
+    
+    // Initial rendering of courses
+    renderCourses('');
+    </script> 
+</body>
+</html>

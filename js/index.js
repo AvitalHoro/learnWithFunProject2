@@ -26,10 +26,6 @@ var courses = [
     { name: "מדעים", imageUrl: "../img/sciences.png" },
     { name: "ציור", imageUrl: "../img/drawing.png" },
     { name: "תנ\"ך", imageUrl: "../img/bibble.png" },
-
-
-
-    // Add more courses as needed
 ];
 
 function renderCourses(filter) {

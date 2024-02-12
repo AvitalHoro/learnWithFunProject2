@@ -36,6 +36,8 @@ button {
     width: 80%;
     font-size: 100%;
     font-family: 'Fredoka', sans-serif;
+    border-radius: 7px;
+
 }
 
 h3 {

@@ -13,14 +13,14 @@
     <title>לומדים בכיף</title>
 </head>
 
-<body>
+<body id="body">
 
     <!--========== HEADER ==========-->
     <header class="" id="header">
         <img class="logo-img-header" src="img/logo.png" alt="לומדים בכיף" href="#">
         <div class="search-header-section">
             <h3 class="search-header-text">מה תרצה ללמוד היום?</h3>
-            <input type="text" class="search-box glowing-border" id="searchInput"  placeholder="חיפוש...">
+            <input type="text" class="search-box glowing-border" id="searchInput" placeholder="חיפוש...">
 
         </div>
         <div class="links-header-section container">
@@ -34,20 +34,35 @@
         <img class="profile-img-header grow-on-hover" id="profile-img-header" src="/img/girl_profile.png" alt="פרופיל">
     </header>
     <div id="overlay" class="overlay"></div>
-
+    <div id="overlay2">
+        <iframe id="login-frame" src="/html/login.html" frameborder="0"></iframe>
+    </div>
     <div class="popup" id="not-valid-popup">
-        <img class="not-valid-img"  src="/img/not_valid.png" alt="כפתור זה אינו זמין">
+        <img class="not-valid-img" src="/img/not_valid.png" alt="כפתור זה אינו זמין">
         <button class="back-to-website-button glowing-border">חזרה לאתר ></button>
 
     </div>
 
     <div class="side-profile" id="side-profile">
-
+        <p id="user-name"></p>
+        <div id="math-div">
+            <p id="math">חשבון</p>
+            <p id="plus-stars">כוכבים חיבור</p>
+            <p id="sub-stars">כוכבים חיסור</p>
+            <p id="mult-stars">כוכבים כפל</p>
+            <p id="div-stars">כוכבים חילוק</p>
+        </div>
+        <div id="hebrew-div">
+            <p id="hebrew">עברית</p>
+            <p id="hebrew-level">רמה שלי בעברית</p>
+            <p id="score-number">ניקוד בעברית</p>
+        </div>
+        <button id="log-out-button" onclick="logout()">התנתק</button>
     </div>
     <div class="main-div">
         <main class="main">
             <!--========== HOME ==========-->
-            <img  class="main-img" src="img/home_img.png" alt="אז מה לומדים היום?">
+            <img class="main-img" src="img/home_img.png" alt="אז מה לומדים היום?">
             <div class="items-grid" id="items-grid">
                 <!--All the options for the learning games will appear here -->
             </div>

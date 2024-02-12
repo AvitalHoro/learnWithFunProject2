@@ -1,78 +1,71 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - codingnepalweb.com -->
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Popup Modal Box</title> 
-<style>.container {
-    position: relative;
-    width: 300px; /* Set the width of your container */
-    height: 400px; /* Set the height of your container */
-    border: 1px solid #ccc;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  img {
-    max-width: 100%;
-    max-height: calc(100% - 30px); /* Adjusted to account for button's height and margin */
-  }
-  
-  button {
-    position: absolute;
-    bottom: 15px; /* Distance from bottom */
-  }</style>
-     <!-- Fontawesome CDN Link -->
+  <title>Changing Number with Increasing Colored Percentage</title>
+  <style>
+    .number {
+      font-size: 400%;
+      position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        top: 30%;
+    }
+    .timer-con {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        background-color: chartreuse;
+        border-radius: 100%;
+        text-align: center;
+        align-items: center;
+    }
+    .back-color-div {
+        background-color: blueviolet;
+        width: 0%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        transform: scale(0%);
+        transition: transform 0.5s ease; /* Smooth transition with 0.5s duration and ease timing function */
+
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <img src="/img/boy_profile.png" alt="Your Image">
-        <button>Button</button>
-      </div>
-    <script>var courses = [
-        { name: "Mathematics", imageUrl: "math.jpg" },
-        { name: "Physics", imageUrl: "physics.jpg" },
-        { name: "Biology", imageUrl: "biology.jpg" },
-        // Add more courses as needed
-    ];
-    
-    // Function to render the list of courses
-    function renderCourses(filter) {
-        var courseList = document.getElementById('courseList');
-        courseList.innerHTML = ''; // Clear previous content
-    
-        courses.forEach(function(course) {
-            if (course.name.toLowerCase().startsWith(filter.toLowerCase())) {
-                var courseDiv = document.createElement('div');
-                courseDiv.classList.add('course');
-    
-                var img = document.createElement('img');
-                img.src = course.imageUrl;
-                img.alt = course.name;
-    
-                var button = document.createElement('button');
-                button.textContent = course.name;
-                
-                courseDiv.appendChild(img);
-                courseDiv.appendChild(button);
-                courseList.appendChild(courseDiv);
-            }
-        });
-    }
-    
-    // Event listener for search input
-    var searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', function() {
-        renderCourses(this.value.trim());
-    });
-    
-    // Initial rendering of courses
-    renderCourses('');
-    </script> 
+<div class="timer-con">
+    <div id="per" class="back-color-div"></div>
+<div class="number" id="number">10</div>
+</div>
+
+<script>
+function changeNumber() {
+  let numberElement = document.getElementById('number');
+  let number = parseInt(numberElement.textContent);
+  let newNumber = number - 1;
+
+  // Set the new number
+  numberElement.textContent = newNumber;
+
+  // Calculate percentage and set color
+  let percentage = 100-((newNumber / 10) * 100); // You can adjust 100 to the desired max value
+  document.getElementById('per').style.transform = 'scale(' + percentage / 100 + ')';
+
+  // document.getElementById('per').style.scale = percentage+'%';
+//   numberElement.style.color = color;
+if (number==1)
+    clearInterval(myInterval);
+}
+
+// Call the function every second
+var myInterval=setInterval(changeNumber, 1000);
+</script>
+
 </body>
 </html>

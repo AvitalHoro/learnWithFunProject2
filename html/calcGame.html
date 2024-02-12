@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="../css/calcGame.css">
+
+    <script src="https://kit.fontawesome.com/66b0994ad9.js" crossorigin="anonymous"></script>
+
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
+    <title>המחשבון שלי</title>
+</head>
+
+<body>
+    <div class="calculator" dir="ltr">
+        <div class="hedaer-calc-screen">
+            <h1 id="the-exercise" class="the-exercise"></h1>
+        </div>
+        <div class="calc-face">
+            <img class="img-face" src="/img/calc_face.png" alt="">
+            <!-- <div class="eye"><div class="pupil"></div></div>
+            <div class="eye"><div class="pupil"></div></div> -->
+        </div>
+        <div class="calc-buttons">
+            <!--here all buttons-->
+            <button id="1" class="digit-button">1</button>
+            <button id="2" class="digit-button">2</button>
+            <button id="3" class="digit-button">3</button>
+            <button id="addition" class="action-button"><i class="fa-solid fa-plus"></i></button>
+            <button id="4" class="digit-button">4</button>
+            <button id="5" class="digit-button">5</button>
+            <button id="6" class="digit-button">6</button>
+            <button id="subtraction" class="action-button"><i class="fa-solid fa-minus"></i></button>
+            <button id="7" class="digit-button">7</button>
+            <button id="8" class="digit-button">8</button>
+            <button id="9" class="digit-button">9</button>
+            <button id="multiplication" class="action-button"><i class="fa-solid fa-xmark"></i></button>
+            <button id="0" class="digit-button">0</button>
+            <button class="equal-button"><i class="fa-solid fa-equals"></i></button>
+            <button id="division" class="action-button"><i class="fa-solid fa-divide"></i></button>
+        </div>
+    </div>
+
+    <div class="speech-ballon">
+        <img src="/img/speach_bubble.png" alt="בועית דיבור">
+        <div class="speech-div">
+            <div id="start-game" class="start-game">
+                <h2 id="start_game_text">
+                    <!-- שלום Name <br>
+            רוצה להתחיל לשחק? -->
+                </h2>
+                <button id="start_button" class="speech-button">כן!</button>
+            </div>
+
+            <div id="instructions" class="instructions">
+                אני לא מחשבון רגיל, <br>כזה שפותר לכם את תרגילים בחשבון. <br> אצלי אתם אלא שפותרים!<br> בכל פעם תוכלו ללחוץ על פעולת חשבון אחרת, ואני אציג לכם תרגילים. לאט לאט הקושי יעלה ואתם תגלו שאתם אלופים! אחרי שתצברו 5 כוכבים בכל פעולות החשבון,         <img src="/img/star.png" alt="כוכב" class="star inline-star">
+                תוכתרו כאלופי החשבון!
+            </div>
+
+            <div id="timer" class="timer">
+                <div class="timer-con">
+                    <div id="per" class="back-color-div"></div>
+                <div class="number" id="number">10</div>
+                </div>      </div>
+
+        </div>
+    </div>
+
+    <div id="my_stars" class="star-container">
+        <!-- <span class="star"></span> -->
+
+        <!--here five star-->
+        <img src="/img/star.png" alt="כוכב" class="star star-entry">
+        <img src="/img/star.png" alt="כוכב" class="star">
+        <img src="/img/star.png" alt="כוכב" class="star">
+        <img src="/img/star.png" alt="כוכב" class="star">
+        <img src="/img/star.png" alt="כוכב" class="star">
+
+    </div>
+    <script src="/js/calcGame.js"></script>
+
+</body>
+
+</html>

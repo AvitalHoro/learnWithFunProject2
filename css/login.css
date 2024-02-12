@@ -1,0 +1,66 @@
+/*===== GOOGLE FONTS =====*/
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Rubik:wght@300;400;500;600&family=Varela+Round&display=swap');
+
+body {
+    font-family: 'Fredoka', sans-serif;
+}
+
+input {
+    background-color: blue;
+    width: 80%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    text-align: start;
+}
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    margin: 0px;
+    overflow: hidden;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    font-size: 100%;
+    font-family: 'Fredoka', sans-serif;
+}
+
+h3 {
+    margin: 0px;
+}
+
+p {
+    margin-bottom: 0px;
+}
+
+img {
+    width: 300px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.glowing-border {
+    border: 2px solid #dadada;
+    border-radius: 7px;
+}
+
+.glowing-border:focus { 
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}

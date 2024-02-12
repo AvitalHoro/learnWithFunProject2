@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body>
 
     <div class="login-box">
-        <h2>כיף שבאת ללמוד</h2>
-        <h2>התחבר כדי לשחק</h2>
-        <input id="username" type="text" placeholder="שם משתמש">
-        <input id="password" type="password" placeholder="סיסמא">
+        <img src="../img/logo.png" alt="">
+        <h3>כיף שבאת ללמוד איתנו!</h3>
+        <h3>התחבר כדי להתחיל</h3>
+        <input class="glowing-border" id="username" type="text" placeholder="שם משתמש">
+        <input class="glowing-border" id="password" type="password" placeholder="סיסמא">
         <button id="login-button" onclick="login()">התחבר</button>
-        <p>?עדיין לא רשום אצלינו</p>
+        <p>עדיין לא רשום אצלינו?</p>
         <button onclick="showSignup()">הרשם</button>
     </div>
 

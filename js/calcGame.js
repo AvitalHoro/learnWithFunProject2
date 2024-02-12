@@ -1,5 +1,5 @@
 const actions = {
-  addition: { iconName: "fa-plus", result: (a, b) => a + b, numOfStar: 0 },
+  addition: { iconName: "fa-plus", result: (a, b) => a + b, numOfStar: localStorage.getItem("numOfStar") ? localStorage.getItem("numOfStar").split(",")[0] : 0},
   subtraction: { iconName: "fa-minus", result: (a, b) => a - b, numOfStar: 0 },
   multiplication: {
     iconName: "fa-xmark",
@@ -274,8 +274,9 @@ function typeDigit(digitId) {
     exerciseElement.classList.add("correctly");
     exerciseElement.innerHTML = "נכון מאוד!";
     stopTimer = true;
-    actions["addition"].numOfStar++;
-    if (actions["addition"].numOfStar % 10 == 0) refreshStar();
+    actions[operationId].numOfStar++;
+
+    if (actions[operationId].numOfStar % 10 == 0) refreshStar();
     setTimeout(function () {
       generateExerciseAcordingLevel(operationId);
     }, 2000);
@@ -320,9 +321,15 @@ document
   });
 
 
+    function saveStars() { 
+    localStorage.setItem("numOfStar", [actions["addition"].numOfStar, actions["subtraction"].numOfStar, actions["multiplication"].numOfStar, actions["division"].numOfStar]);
+ }
+
   document.getElementById("go-home").addEventListener('click', function() {
     document.body.classList.add('fade-out');
     setTimeout(function() {
+        saveStars();
         window.location.href = '../index.html';
+
     }, 500);}
     );

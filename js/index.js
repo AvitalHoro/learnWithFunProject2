@@ -101,23 +101,23 @@ function showProfileSection() {
     } else {
         ProfileDiv.style.display = 'none';
     }
-
+  
     var userName=document.getElementById("user-name");
-    var plusStars=document.getElementById("plus-stars");
-    var subStars=document.getElementById("sub-stars");
-    var multStars=document.getElementById("mult-stars");
-    var divStars=document.getElementById("div-stars");
-    var hebrewLevel=document.getElementById("hebrew-level");
-    var hebrewScore=document.getElementById("score-number");
+    var userEmail=document.getElementById("user-email");
+    var lastVisit=document.getElementById("user-last-visit");
+    var Stars=document.getElementById("user-score");
+    var rating=document.getElementById("user-rating");
     var currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    lastVisit=currentUser.preDate.getDate()+"/"+currentUser.preDate.getMonth()+"/"+currentUser.preDate.getFullYear();
-    userName.textContent= "שלום" + "\n" + currentUser.userName;
-    starsSum=currentUser.mathStars.add+currentUser.mathStars.sub+currentUser.mathStars.mult+currentUser.mathStars.div+hebrewScore;
-    plusStars.textContent= lastVisit;
-    subStars.textContent= "חיסור: "+currentUser.mathStars.sub+" כוכבים";
-    multStars.textContent= "כפל: "+currentUser.mathStars.mult+" כוכבים";
-    divStars.textContent= "חילוק: "+currentUser.mathStars.div+" כוכבים";
     
+    userName.innerText= "שלום" + "\n" + currentUser.username;
+    SumStars=currentUser.mathStars.add+currentUser.mathStars.sub+currentUser.mathStars.mult+currentUser.mathStars.div;
+    Stars.innerText= "מספר כוכבים" + "\n" + SumStars;
+    const date = new Date(currentUser.preDate);
+    lastVisit.innerText = "הפעם האחרונה שלך פה"+"\n"+date.getDate()+'/'+(date.getMonth() + 1)+'/'+date.getFullYear()+" "+date.getHours()+':'+date.getMinutes();
+    userEmail.innerText="המייל שלך" + "\n"+ currentUser.email;
+    rating.innerText="דירוג" + "\n"+getRating();
+
+
     // var aaa = {
     //     firstName: firstName,
     //     lastName: lastName,

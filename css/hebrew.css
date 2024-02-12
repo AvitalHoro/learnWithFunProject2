@@ -1,3 +1,7 @@
+/*===== GOOGLE FONTS =====*/
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Rubik:wght@300;400;500;600&family=Varela+Round&display=swap');
+
+
 /* css to the learning Hebrew game */
 
 
@@ -40,7 +44,26 @@
 
 
 
+  :root {
+  
+    /*========== Colors ==========*/
+    --background-color: #E6E6E6;
+    --button-color: #EA3546;
+    --hover-button-color: #ee5e6d;
 
+    --color1: #5575B4;
+    --color2: #662E9B;
+    --color3: #A83271;
+    --color4: #EA3546;
+    --color5: #F86624;
+    --color6: #F9C80E;
+    --text-gray-color: #898989;
+
+    /*========== Font and typography ==========*/
+    --body-font: 'Fredoka', sans-serif;
+
+    --header-height: 95px;
+}
 
 
 
@@ -50,6 +73,7 @@
 
 body, html {
     height: 100%;
+    font-family: 'Fredoka', sans-serif;
 }
 
 .container p{
@@ -57,14 +81,12 @@ body, html {
     text-align: center;
     align-content: center;
     font-size: 20px;
-    font-family: 'Comix No2 CLM';
     margin-top: 20px;
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
 }
@@ -258,7 +280,7 @@ body {
 
 
 #playerDetails-div{
-    background-color: rgb(255, 236, 174);
+    background-color: var(--background-color);
     width:20%;
     display: flex;
     flex-direction: column;
@@ -290,3 +312,36 @@ body {
     cursor: pointer;
 }
 
+#success-div, #gameOver-div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 100%;
+    width: 150px;
+    height: 150px;
+}
+
+.logo
+{
+    height: 100px;
+    margin: 0px;
+}
+
+button {
+    font-family: var(--body-font);
+}
+
+
+
+#tryAgainButton, #nextLevelButton, #start-button {
+    margin-top: 10px;
+    font-size: 24px;
+    margin-bottom: 5%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: var(--color6);
+} 

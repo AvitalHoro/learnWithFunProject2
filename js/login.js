@@ -21,7 +21,7 @@ var users = [
         hebrewScore:6,
         hebrewLevel:1,
         mathStars:{
-            plus: 2,
+            add: 2,
             sub: 0,
             mult: 1,
             div: 0}
@@ -36,7 +36,7 @@ var users = [
         hebrewScore:2,
         hebrewLevel:1,
         mathStars:{
-            plus: 1,
+            add: 1,
             sub: 1,
             mult: 0,
             div: 0}
@@ -95,7 +95,6 @@ function login() {
 }
 
 
-
 function blockLogin() {
     //Blocking further login attempts for one minute, after five incorrect attempts
     document.getElementById('login-button').disabled = true;
@@ -108,16 +107,3 @@ function blockLogin() {
     }, 30000); // Blocked for 0.5 minute
 }
 
-
-// function showSignup() {
-//     loginFrame.src = 'signup.html';
-//   }
-
-// function showLogin() {
-//     loginFrame.src = 'login.html';
-//   }
-
-// function showSignup() {
-//     Change the parent frame to signup page
-//     window.parent.showSignup();
-// }

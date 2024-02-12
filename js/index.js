@@ -103,7 +103,7 @@ function showProfileSection() {
     var hebrewScore=document.getElementById("score-number");
     var currentUser=JSON.parse(localStorage.getItem('currentUser'));
     userName.textContent= currentUser.firstName+" "+currentUser.lastName;
-    plusStars.textContent= "חשבון: "+currentUser.mathStars.plus+" כוכבים";
+    plusStars.textContent= "חשבון: "+currentUser.mathStars.add+" כוכבים";
     
     // var aaa = {
     //     firstName: firstName,
@@ -115,7 +115,7 @@ function showProfileSection() {
     //     hebrewScore:0,
     //     hebrewLevel:0,
     //     mathStars:{
-    //         plus: 0,
+    //         add: 0,
     //         sub: 0,
     //         mult: 0,
     //         div: 0

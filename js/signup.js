@@ -27,11 +27,24 @@ function signupClick() {
     var gender = document.querySelector('input[name="gender"]:checked').value;
     gender=(gender=='male')? "זכר" : "נקבה";
 
+    //check if the password is more than 7 characters
+    if(password.length<8){
+        alert('הסיסמא צריכה להכיל לפחות 8 תווים');
+        return;
+    }
+
     //check if the passwords are the same
     if (password != password2) {
         alert('אי התאמה בסיסמא, הכנס שנית');
         return;
     }
+
+    //check if the email address is correct
+    if(!isCorrectEmail(email)){
+        alert('כתובת אימייל לא תקינה');
+        return;
+    }
+
 
     var users = JSON.parse(localStorage.getItem('users')) || [];
 
@@ -88,4 +101,10 @@ function signupClick() {
 
 function showLogin() {
     loginFrame.src = '/html/login.html';
+}
+
+//checking the email format
+function isCorrectEmail(email) {
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
 }

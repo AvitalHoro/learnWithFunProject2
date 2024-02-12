@@ -25,6 +25,7 @@ function signupClick() {
     }
 
     var gender = document.querySelector('input[name="gender"]:checked').value;
+    gender=(gender=='male')? "זכר" : "נקבה";
 
     //check if the passwords are the same
     if (password != password2) {
@@ -55,7 +56,7 @@ function signupClick() {
         username: username,
         password: password,
         hebrewScore:0,
-        hebrewLevel:0,
+        hebrewLevel:1,
         mathStars:{
             add: 0,
             sub: 0,
@@ -77,16 +78,12 @@ function signupClick() {
     localStorage.setItem('currentUser', JSON.stringify(newUser));
 
 
-    // localStorage.setItem(userKey, JSON.stringify(user));
-
     alert('ברוך הבא! נרשמת בהצלחה');
-
+    localStorage.setItem('isConnected', true);
     loginDiv.style.visibility = "hidden";
     body.style.pointerEvents = 'auto';
-    user = JSON.parse(localStorage.getItem('user_' + username));
-    window.currentUser = user;
-}
 
+}
 
 
 function showLogin() {

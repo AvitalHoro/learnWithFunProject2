@@ -1,6 +1,11 @@
 var showButton = document.getElementById('profile-img-header');
-
 showButton.addEventListener('click', showProfileSection);
+var loginDiv=document.getElementById("overlay2");
+var loginIframe=document.getElementById("login-frame");
+// localStorage.setItem('isConnected',false);
+if(localStorage.getItem('isConnected')==='true'){
+    loginIframe.src='';
+    loginDiv.style.visibility="hidden";}
 
 var courses = [
     { name: "עברית", imageUrl: "../img/hebrew.png" },
@@ -10,6 +15,7 @@ var courses = [
     { name: "ציור", imageUrl: "../img/drawing.png" },
     { name: "תנ\"ך", imageUrl: "../img/bibble.png" },
 ];
+
 
 function renderCourses(filter) {
     var courseList = document.getElementById('items-grid');
@@ -140,6 +146,7 @@ function logout(){
     loginDiv.style.visibility="visible";
     var loginFrame = document.getElementById("login-frame");
     loginFrame.src='/html/login.html';
+    localStorage.setItem('isConnected',false);
 }
 
 document.getElementById("calcGame").addEventListener('click', function() {

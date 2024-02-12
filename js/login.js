@@ -5,47 +5,48 @@ var body = window.parent.document.getElementById("body");  //להוסיף את �
 body.style.pointerEvents = 'none';
 loginFrame.style.pointerEvents = 'auto';
 
+
 var loginAttempts = 0;
 var blockLoginTimer;
 // var loginForm=document.getElementById("login-form");
 
 //Initialize the array of users by two users
-var users = [
-    {
-        firstName: "שרה",
-        lastName: "כהן",
-        email: "sarah.cohen@gmail.com",
-        gender: "נקבה",
-        username: "שרה123",
-        password: "1234",
-        hebrewScore:6,
-        hebrewLevel:1,
-        mathStars:{
-            add: 2,
-            sub: 0,
-            mult: 1,
-            div: 0},
-        preDate: new Date('12/3/2022'),
-        currentDate: new Date('12/3/2022')
-    },
-    {
-        firstName: "יוני",
-        lastName: "נתן",
-        email: "yoni@gmail.com",
-        gender: "זכר",
-        username: "yonini",
-        password: "6789",
-        hebrewScore:2,
-        hebrewLevel:1,
-        mathStars:{
-            add: 1,
-            sub: 1,
-            mult: 0,
-            div: 0},
-        preDate: new Date(2023,3,15,14,23,0),
-        currentDate: new Date(2023,3,15,14,23,0)
-    }
-];
+// var users = [
+//     {
+//         firstName: "שרה",
+//         lastName: "כהן",
+//         email: "sarah.cohen@gmail.com",
+//         gender: "נקבה",
+//         username: "שרה123",
+//         password: "1234",
+//         hebrewScore:6,
+//         hebrewLevel:1,
+//         mathStars:{
+//             add: 2,
+//             sub: 0,
+//             mult: 1,
+//             div: 0},
+//         preDate: new Date('12/3/2022'),
+//         currentDate: new Date('12/3/2022')
+//     },
+//     {
+//         firstName: "יוני",
+//         lastName: "נתן",
+//         email: "yoni@gmail.com",
+//         gender: "זכר",
+//         username: "yonini",
+//         password: "6789",
+//         hebrewScore:2,
+//         hebrewLevel:1,
+//         mathStars:{
+//             add: 1,
+//             sub: 1,
+//             mult: 0,
+//             div: 0},
+//         preDate: new Date(2023,3,15,14,23,0),
+//         currentDate: new Date(2023,3,15,14,23,0)
+//     }
+// ];
 
 // Save the initial users array to Local Storage
 localStorage.setItem('users', JSON.stringify(users));
@@ -56,6 +57,8 @@ function showSignup() {
 
 
 function login() {
+
+    localStorage.setItem('isConnected', false);
 
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
@@ -99,6 +102,7 @@ function login() {
 
     loginDiv.style.visibility = "hidden";
     body.style.pointerEvents = 'auto';
+    localStorage.setItem('isConnected', true);
 }
 
 

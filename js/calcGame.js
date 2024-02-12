@@ -1,12 +1,14 @@
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
 const actions = {
-  addition: { iconName: "fa-plus", result: (a, b) => a + b, numOfStar: localStorage.getItem("numOfStar") ? localStorage.getItem("numOfStar").split(",")[0] : 0},
-  subtraction: { iconName: "fa-minus", result: (a, b) => a - b, numOfStar: 0 },
+  addition: { iconName: "fa-plus", result: (a, b) => a + b, numOfStar: currentUser ? currentUser.mathStars.add : 0},
+  subtraction: { iconName: "fa-minus", result: (a, b) => a - b, numOfStar: currentUser ? currentUser.mathStars.sub : 0},
   multiplication: {
     iconName: "fa-xmark",
     result: (a, b) => a * b,
-    numOfStar: 0,
+    numOfStar: currentUser ? currentUser.mathStars.mul : 0,
   },
-  division: { iconName: "fa-divide", result: (a, b) => a / b, numOfStar: 0 },
+  division: { iconName: "fa-divide", result: (a, b) => a / b, numOfStar: currentUser ? currentUser.mathStars.div : 0},
 };
 
 const levels = {
@@ -321,8 +323,13 @@ document
   });
 
 
-    function saveStars() { 
-    localStorage.setItem("numOfStar", [actions["addition"].numOfStar, actions["subtraction"].numOfStar, actions["multiplication"].numOfStar, actions["division"].numOfStar]);
+function saveStars() { 
+
+    currentUser.mathStars.add = actions["addition"].numOfStar;
+    currentUser.mathStars.sub = actions["subtraction"].numOfStar;
+    currentUser.mathStars.mul = actions["multiplication"].numOfStar;
+    currentUser.mathStars.div = actions["division"].numOfStar;
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
  }
 
   document.getElementById("go-home").addEventListener('click', function() {

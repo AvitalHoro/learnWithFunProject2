@@ -25,7 +25,6 @@ var images = [
 ]
 
 
-var stage = 1;   //the current stage of the player
 const endLevel1 = 5;
 const endLevel2 = 10;
 const endGame = 15;
@@ -41,7 +40,14 @@ var isClicked = false;   //ia the player clicked on a image
 const nextLevText = document.getElementById("nextLevText-span");
 const nextLevelDiv = document.getElementById("nextLevel-div");
 const stageLabel = document.getElementById("stage-label");
-
+const levelLabel = document.getElementById("player-level");
+const pointsLabel = document.getElementById("player-points");
+var currentUser=JSON.parse(localStorage.getItem('currentUser'));
+var userScore=currentUser.hebrewScore;
+var stage=currentUser.hebrewLevel;
+var level=(stage > endLevel2) ? 3 : (stage > endLevel1) ? 2 : 1;   //the current stage of the player
+const userName=currentUser.firstName+" "+currentUser.lastName;
+const userNamePlace=document.getElementById("player-name");
 
 function addRandAttribute(from) {
     var temp = from.map(function (im) {
@@ -58,12 +64,6 @@ function randomNum() {
 
 function createArr() {
 
-    //A copy to the array with random nums
-    // var imgCopy= images.map(function(im){
-    //     var newElement = Object.assign({},im);
-    //     newElement.randNum=randomNum();
-    //     return newElement;
-    // });
     imgCopy = addRandAttribute(images);
 
     var curIm = imgCopy[stage - 1];
@@ -87,6 +87,11 @@ function createArr() {
 
 //A function to "create" the current game and start it
 function startClick() {
+
+/* <p id="player-points"></p>
+<p id="player-rate-label">מדורג במקום ה <span id="player-rate"></span></p>
+ */
+
     mone = 0;
     isClicked = false;
     nextLevelDiv.style.visibility = "hidden"
@@ -94,6 +99,9 @@ function startClick() {
     gameOverDiv.style.visibility = "hidden";
     successDiv.style.visibility = "hidden";
     stageLabel.textContent = "שלב " + stage;
+    levelLabel.textContent="רמה "+level;
+    pointsLabel.textContent=currentUser.hebrewScore+" נקודות"
+
 
 
     //Adding the images to the screen
@@ -155,7 +163,13 @@ function finishGame(isSuccess) {
         imagesDiv.removeChild(imagesDiv.firstChild);
     }
 
-    if (isSuccess == true) { successDiv.style.visibility = "visible"; }
+    if (isSuccess == true) {
+        // userPoints=currentUser.hebrewScore;
+        pointsToAdd=(stage > endLevel2) ? 7 : (stage > endLevel1) ? 4 : 2;
+        currentUser.hebrewScore+=pointsToAdd;
+        
+        stage = stage + 1;
+        successDiv.style.visibility = "visible"; }
     else { gameOverDiv.style.visibility = "visible"; }
 
 }
@@ -163,7 +177,7 @@ function finishGame(isSuccess) {
 //going to the next stage
 function nextStage() {
 
-    stage = stage + 1;
+    // stage = stage + 1;
     //Checking whether a level has been passed
     if (stage == endLevel1 + 1 || stage == endLevel2 + 1 || stage == endGame + 1) {
         if (stage == endLevel1 + 1) {

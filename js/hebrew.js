@@ -48,6 +48,10 @@ var stage=currentUser.hebrewLevel;
 var level=(stage > endLevel2) ? 3 : (stage > endLevel1) ? 2 : 1;   //the current stage of the player
 const userName=currentUser.firstName+" "+currentUser.lastName;
 const userNamePlace=document.getElementById("player-name");
+userNamePlace.textContent=userName;
+levelLabel.textContent="רמה "+level;
+stageLabel.textContent="שלב "+stage;
+pointsLabel.textContent=userScore;
 
 function addRandAttribute(from) {
     var temp = from.map(function (im) {
@@ -101,7 +105,7 @@ function startClick() {
     stageLabel.textContent = "שלב " + stage;
     levelLabel.textContent="רמה "+level;
     pointsLabel.textContent=currentUser.hebrewScore+" נקודות"
-
+    wordDiv.visibility="visible";
 
 
     //Adding the images to the screen
@@ -164,11 +168,15 @@ function finishGame(isSuccess) {
     }
 
     if (isSuccess == true) {
-        // userPoints=currentUser.hebrewScore;
+        // update the user details
         pointsToAdd=(stage > endLevel2) ? 7 : (stage > endLevel1) ? 4 : 2;
         currentUser.hebrewScore+=pointsToAdd;
-        
         stage = stage + 1;
+        currentUser.hebrewLevel=stage;
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        var users = JSON.parse(localStorage.getItem('users'));
+
+        
         successDiv.style.visibility = "visible"; }
     else { gameOverDiv.style.visibility = "visible"; }
 

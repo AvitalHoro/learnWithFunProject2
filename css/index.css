@@ -207,6 +207,8 @@ width: 280px;
 
   }
 
+  /*--------------------pop-up section--------------------*/
+
   .popup {
     width: 400px;
     background-color: var(--color6);
@@ -261,6 +263,13 @@ width: 280px;
     height: 80%;
 
 }
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+
 
 
 #overlay2 {

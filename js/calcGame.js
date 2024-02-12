@@ -158,6 +158,7 @@ function defineIcon(operationId) {
 let numberElement = document.getElementById('number');
 
 
+
 function generateExercise(operationId) {
     if (exerciseElement.classList.contains('time-end')) {
         exerciseElement.classList.remove('time-end');
@@ -281,8 +282,9 @@ function typeDigit(digitId) {
         exerciseElement.classList.add('correctly');
         exerciseElement.innerHTML = "נכון מאוד!";
         stopTimer = true;
+        actions['addition'].numOfStar++;
         setTimeout(function() {
-        generateExercise(operationId);}, 3000);
+        generateExercise(operationId);}, 2000);
     }
     else if (parseInt(stringNum)>current_result||(current_result<10 && stringNum.length>1) || (current_result<100 && stringNum.length>2) || (current_result<1000 && stringNum.length>3))
     {
@@ -291,7 +293,7 @@ function typeDigit(digitId) {
         stopTimer = true;
 
         setTimeout(function() {
-            generateExercise(operationId);}, 3000);
+            generateExercise(operationId);}, 2000);
 
     }
     // exerciseElement.innerHTML = document.getElementById(digitId).innerText;

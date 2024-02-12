@@ -273,13 +273,13 @@ transform: rotate(0.01turn);
       position: relative;
       width: 200px;
       height: 200px;
-      background-color: chartreuse;
+      background-color: var(--color5);
       border-radius: 100%;
       text-align: center;
       align-items: center;
   }
   .back-color-div {
-      background-color: blueviolet;
+      background-color: var(--color2);
       width: 0%;
       height: 100%;
       position: absolute;

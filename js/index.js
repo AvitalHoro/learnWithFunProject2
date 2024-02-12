@@ -107,7 +107,7 @@ function showProfileSection() {
     var divStars=document.getElementById("div-stars");
     var hebrewLevel=document.getElementById("hebrew-level");
     var hebrewScore=document.getElementById("score-number");
-    var currentUser=JSON.parse(localStorage.getItem('currentUser'));
+    var currentUser = JSON.parse(localStorage.getItem("currentUser"));
     userName.textContent= currentUser.firstName+" "+currentUser.lastName;
     plusStars.textContent= currentUser.preDate;
     subStars.textContent= "חיסור: "+currentUser.mathStars.sub+" כוכבים";
@@ -131,9 +131,13 @@ function showProfileSection() {
     //     }
     // };
 
-
+    if(currentUser.gender=="זכר")
+    {
+        document.getElementById("profile-img-header").src= "../img/boy_profile.png"
+    }
 
 };
+
 
 function logout(){
     var ProfileDiv = document.getElementById('side-profile');
@@ -156,4 +160,6 @@ document.getElementById("calcGame").addEventListener('click', function() {
         setTimeout(function() {
             window.location.href = '../html/hebrew.html';
         }, 500);});
+
+
     

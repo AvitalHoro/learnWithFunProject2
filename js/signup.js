@@ -61,7 +61,9 @@ function signupClick() {
             sub: 0,
             mult: 0,
             div: 0
-        }
+        },
+        preDate: new Date(),
+        currentDate: new Date()
     };
 
     // Add the new user to the users array

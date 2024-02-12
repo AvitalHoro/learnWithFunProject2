@@ -103,7 +103,10 @@ function showProfileSection() {
     var hebrewScore=document.getElementById("score-number");
     var currentUser=JSON.parse(localStorage.getItem('currentUser'));
     userName.textContent= currentUser.firstName+" "+currentUser.lastName;
-    plusStars.textContent= "חשבון: "+currentUser.mathStars.add+" כוכבים";
+    plusStars.textContent= currentUser.preDate;
+    subStars.textContent= "חיסור: "+currentUser.mathStars.sub+" כוכבים";
+    multStars.textContent= "כפל: "+currentUser.mathStars.mult+" כוכבים";
+    divStars.textContent= "חילוק: "+currentUser.mathStars.div+" כוכבים";
     
     // var aaa = {
     //     firstName: firstName,

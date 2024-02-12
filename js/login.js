@@ -24,7 +24,9 @@ var users = [
             add: 2,
             sub: 0,
             mult: 1,
-            div: 0}
+            div: 0},
+        preDate: new Date('12/3/2022'),
+        currentDate: new Date('12/3/2022')
     },
     {
         firstName: "יוני",
@@ -39,7 +41,9 @@ var users = [
             add: 1,
             sub: 1,
             mult: 0,
-            div: 0}
+            div: 0},
+        preDate: new Date(2023,3,15,14,23,0),
+        currentDate: new Date(2023,3,15,14,23,0)
     }
 ];
 
@@ -82,6 +86,9 @@ function login() {
 
         return; // Stop login process
     }
+
+    user.preDate=user.currentDate;
+    user.currentDate=new Date;
 
     // Successful login
     localStorage.setItem('currentUser', JSON.stringify(user));

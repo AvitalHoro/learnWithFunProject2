@@ -318,3 +318,11 @@ document
     generateExerciseAcordingLevel(operationId);
     refreshStar();
   });
+
+
+  document.getElementById("go-home").addEventListener('click', function() {
+    document.body.classList.add('fade-out');
+    setTimeout(function() {
+        window.location.href = '../index.html';
+    }, 500);}
+    );

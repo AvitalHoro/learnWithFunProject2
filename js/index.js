@@ -45,10 +45,18 @@ function renderCourses(filter) {
 
             var button = document.createElement('button');
             button.classList.add('game-item-button', 'glowing-border');
-            if(course.name !== "חשבון" && course.name !== "עברית")
+            if(course.name == "חשבון")
+            {
+                button.id="calcGame"
+            }
+            else if(course.name == "עברית")
+            {
+
+            }
+            else //(course.name !== "חשבון" && course.name !== "עברית")
             {
                 button.classList.add('not-valid-button');
-                var buttons = document.getElementsByClassName('not-valid-button');
+                //var buttons = document.getElementsByClassName('not-valid-button');
     
             }
             button.textContent = course.name;
@@ -90,3 +98,11 @@ document.addEventListener('click', function(event) {
         closePopup('not-valid-popup');
     }
 });
+
+document.getElementById("calcGame").addEventListener('click', function() {
+    document.body.classList.add('fade-out');
+    setTimeout(function() {
+        window.location.href = '../html/calcGame.html';
+    }, 500);});
+
+

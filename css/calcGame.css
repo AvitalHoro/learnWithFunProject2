@@ -378,3 +378,13 @@ transform: rotate(0.01turn);
     height: 80%;
 
 }
+
+.side-logo {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 200px;
+    z-index: 100;
+    cursor: pointer;
+}
+

@@ -84,7 +84,7 @@ let divScore = 0;
 
 let result = 0;
 
-let Name = "אביטל";
+let Name = currentUser.username;
 let current_result = 0;
 let stringInputNum = "";
 let stopTimer = false;

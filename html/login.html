@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
@@ -13,9 +13,9 @@
     <div class="login-box">
         <h2>כיף שבאת ללמוד</h2>
         <h2>התחבר כדי לשחק</h2>
-        <input type="text" placeholder="שם משתמש">
-        <input type="password" placeholder="סיסמא">
-        <button onclick="login()">התחבר</button>
+        <input id="username" type="text" placeholder="שם משתמש">
+        <input id="password" type="password" placeholder="סיסמא">
+        <button id="login-button" onclick="login()">התחבר</button>
         <p>?עדיין לא רשום אצלינו</p>
         <button onclick="showSignup()">הרשם</button>
     </div>

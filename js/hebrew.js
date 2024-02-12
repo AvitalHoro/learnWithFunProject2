@@ -205,6 +205,7 @@ function nextStage() {
     if (stage == endLevel1 + 1 || stage == endLevel2 + 1 || stage == endGame + 1) {
         if (stage == endLevel1 + 1) {
             nextLevText.textContent = "כל הכבוד! עברת לשלב 2"
+            
         };
         if (stage == endLevel2 + 1) {
             nextLevText.textContent = "כל הכבוד! עברת לשלב 3"

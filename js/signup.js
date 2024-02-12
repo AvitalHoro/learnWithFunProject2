@@ -1,58 +1,92 @@
+var loginDiv=window.parent.document.getElementById("overlay2");
+var loginFrame = window.parent.document.getElementById("login-frame");
 
 // window.parent.document.getElementById('signup-form').addEventListener('submit', function(event)
-var loginDiv = window.parent.document.getElementById("overlay");
-var loginFrame = window.parent.document.getElementById("login-frame");
 var body = window.parent.document.getElementById("body");  //להוסיף את התז בדף הבית
-var userKey = 0;
 body.style.pointerEvents = 'none';
 loginFrame.style.pointerEvents = 'auto';
 
-function showLogin() {
-    loginFrame.src = 'login.html';
-}
+
 
 function signupClick() {
 
     var firstName = document.getElementById('firstName').value;
     var lastName = document.getElementById('lastName').value;
     var email = document.getElementById('email').value;
+    var genderAll = document.querySelectorAll('input[name="gender"]');
     var username = document.getElementById('userName').value;
     var password = document.getElementById('password').value;
     var password2 = document.getElementById('password2').value;
 
+    //check if all the fields ar full
+    if(firstName==''||lastName==''||email==''||username==''||password==''||password2==''||(genderAll[0].checked==false&&genderAll[1].checked==false)){
+        alert('נא למלא את כל השדות');
+        return;
+    }
+
+    var gender = document.querySelector('input[name="gender"]:checked').value;
+
+    //check if the passwords are the same
     if (password != password2) {
         alert('אי התאמה בסיסמא, הכנס שנית');
         return;
     }
 
+    var users = JSON.parse(localStorage.getItem('users')) || [];
+
+    // Check if username already exists
+    var existingUser = users.find(function(user) {
+        return user.username === username;
+    });
+    if (existingUser) {
+        alert('שם המשתמש כבר קיים, נסה שם אחר');
+        // document.getElementById('error-message').style.display = 'block';
+        return; // Stop registration process
+    }
+
+
+    
     // Create user object
-    var user = {
+    var newUser = {
         firstName: firstName,
         lastName: lastName,
         email: email,
+        gender: gender,
         username: username,
         password: password,
-        lastEntryDate: new Date().toISOString(), // Current date/time
-        totalScore: 0, // Initial total score
-        gameLevels: {
-            game1: 1,
-            game2: 1
+        hebrewScore:0,
+        hebrewLevel:0,
+        mathStars:{
+            plus: 0,
+            sub: 0,
+            mult: 0,
+            div: 0
         }
     };
 
-    // Save user object to Local Storage
-    localStorage.setItem(++userKey, JSON.stringify(user));
+    // Add the new user to the users array
+    users.push(newUser);
 
-    // Clear form fields
-    document.getElementById('signup-form').reset();
+    
+    // Save the updated users array back to Local Storage
+    localStorage.setItem('users', JSON.stringify(users));
+
+    // Save the current user separately as "currentUser"
+    localStorage.setItem('currentUser', JSON.stringify(newUser));
+
+
+    // localStorage.setItem(userKey, JSON.stringify(user));
 
     alert('ברוך הבא! נרשמת בהצלחה');
 
     loginDiv.style.visibility = "hidden";
     body.style.pointerEvents = 'auto';
+    user = JSON.parse(localStorage.getItem('user_' + username));
+    window.currentUser = user;
 }
 
+
+
 function showLogin() {
-    // Change the parent frame to login page
-    window.parent.showLogin();
+    loginFrame.src = '/html/login.html';
 }

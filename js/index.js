@@ -1,23 +1,6 @@
 var showButton = document.getElementById('profile-img-header');
-var ProfileDiv = document.getElementById('side-profile');
-
-
-function showProfileSection() {
-    console.log("kjhgf");
-    // Toggle the visibility of the target div
-    if (ProfileDiv.style.display === 'none') {
-        ProfileDiv.style.display = 'block';
-        ProfileDiv.style.width = '150px';
-
-    } else {
-        ProfileDiv.style.display = 'none';
-    }
-
-
-};
 
 showButton.addEventListener('click', showProfileSection);
-
 
 var courses = [
     { name: "עברית", imageUrl: "../img/hebrew.png" },
@@ -90,3 +73,54 @@ document.addEventListener('click', function(event) {
         closePopup('not-valid-popup');
     }
 });
+
+function showProfileSection() {
+    var ProfileDiv = document.getElementById('side-profile');
+
+    // Toggle the visibility of the target div
+    if (ProfileDiv.style.display === 'none') {
+        ProfileDiv.style.display = 'flex';
+        // ProfileDiv.style.width = '150px';
+
+    } else {
+        ProfileDiv.style.display = 'none';
+    }
+
+    var userName=document.getElementById("user-name");
+    var plusStars=document.getElementById("plus-stars");
+    var subStars=document.getElementById("sub-stars");
+    var multStars=document.getElementById("mult-stars");
+    var divStars=document.getElementById("div-stars");
+    var hebrewLevel=document.getElementById("hebrew-level");
+    var hebrewScore=document.getElementById("score-number");
+    var currentUser=JSON.parse(localStorage.getItem('currentUser'));
+    userName.textContent=  currentUser.firstName+" "+currentUser.lastName;
+    // var aaa = {
+    //     firstName: firstName,
+    //     lastName: lastName,
+    //     email: email,
+    //     gender: gender,
+    //     username: username,
+    //     password: password,
+    //     hebrewScore:0,
+    //     hebrewLevel:0,
+    //     mathStars:{
+    //         plus: 0,
+    //         sub: 0,
+    //         mult: 0,
+    //         div: 0
+    //     }
+    // };
+
+
+
+};
+
+function logout(){
+    var ProfileDiv = document.getElementById('side-profile');
+    ProfileDiv.style.display = 'none';
+    var loginDiv = window.parent.document.getElementById("overlay2");
+    loginDiv.style.visibility="visible";
+    var loginFrame = document.getElementById("login-frame");
+    loginFrame.src='/html/login.html';
+}

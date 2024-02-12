@@ -5,22 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup Page</title>
-    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="../css/signup.css">
 </head>
+
+
 
 <body>
 
     <div class="signup-box">
         <h2>הרשם כמשתמש חדש</h2>
-        <form id="signup-form">
-            <input id="firstName" type="text" placeholder="שם פרטי">
-            <input id="lastName" type="text" placeholder="שם משפחה">
-
-            <input id="email" type="text" placeholder="מייל">
-            <input id="userName" type="text" placeholder="שם שמתמש לבחירתך">
-            <input id="password" type="password" placeholder="סיסמא">
-            <input id="password2" type="password" placeholder="הכנס סיסמא שנית">
-        </form>
+        <input id="firstName" type="text" placeholder="שם פרטי">
+        <input id="lastName" type="text" placeholder="שם משפחה">
+        <input id="email" type="email" placeholder="מייל">
+        <div>
+            <label>
+                <input type="radio" name="gender" value="male">
+                <span class="checkmark"></span> זכר
+            </label>
+            <label>
+                <input type="radio" name="gender" value="female">
+                <span class="checkmark"></span> נקבה
+            </label>
+        </div>
+        <input id="userName" type="text" placeholder="שם שמתמש לבחירתך">
+        <input id="password" type="password" placeholder="סיסמא">
+        <input id="password2" type="password" placeholder="הכנס סיסמא שנית">
         <button onclick="signupClick()">הרשם</button>
         <p>?כבר רשום אצלינו</p>
         <button onclick="showLogin()">התחבר</button>

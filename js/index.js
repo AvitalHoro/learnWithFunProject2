@@ -94,7 +94,9 @@ function showProfileSection() {
     var hebrewLevel=document.getElementById("hebrew-level");
     var hebrewScore=document.getElementById("score-number");
     var currentUser=JSON.parse(localStorage.getItem('currentUser'));
-    userName.textContent=  currentUser.firstName+" "+currentUser.lastName;
+    userName.textContent= currentUser.firstName+" "+currentUser.lastName;
+    plusStars.textContent= "חשבון: "+currentUser.mathStars.plus+" כוכבים";
+    
     // var aaa = {
     //     firstName: firstName,
     //     lastName: lastName,

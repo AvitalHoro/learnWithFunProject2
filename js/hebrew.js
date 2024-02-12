@@ -1,8 +1,45 @@
+//! להעביר לדף הבית
+
+//  var loginDiv=document.getElementById("overlay");
+// var loginFrame = document.getElementById("login-frame");
+// var body = document.getElementById("body");  //להוסיף את התז בדף הבית
+
+// body.style.pointerEvents = 'none';
+// body.style.pointerEvents='auto'; //ככה מחזירים בחזרה
+// loginFrame.style.pointerEvents = 'auto';
+
+// function showSignup() {
+//     loginFrame.src = 'signup.html';
+// }
+
+// function showLogin() {
+//     loginFrame.src = 'login.html';
+// }
+
+// function login() {
+
+
+
+//     loginDiv.style.visibility="hidden";
+//     body.style.pointerEvents = 'auto';
+// }
+
+// function signup() {
+
+
+
+//     loginDiv.style.visibility="hidden";
+//     body.style.pointerEvents = 'auto';
+// }
+
+//! עד כאן להעביר לדף הבית
+
+
 //js code for the learning hebrew game
 
 //an array contains the images and the word that in use in the game
 var images = [
-    
+
     { name: "תפוח", src: "/img/apple.png" },
     { name: "כלב", src: "/img/dog.jpg" },
     { name: "בית", src: "/img/house.jpg" },
@@ -25,9 +62,6 @@ var images = [
 ]
 
 
-
-
-
 var stage = 1;   //the current stage of the player
 const endLevel1 = 5;
 const endLevel2 = 10;
@@ -43,7 +77,7 @@ var mone = 0;   //count how much images passed the screen
 var isClicked = false;   //ia the player clicked on a image
 const nextLevText = document.getElementById("nextLevText-span");
 const nextLevelDiv = document.getElementById("nextLevel-div");
-const stageLabel=document.getElementById("stage-label");
+const stageLabel = document.getElementById("stage-label");
 
 
 function addRandAttribute(from) {
@@ -92,11 +126,11 @@ function createArr() {
 function startClick() {
     mone = 0;
     isClicked = false;
-    nextLevelDiv.style.visibility="hidden"
+    nextLevelDiv.style.visibility = "hidden"
     startButton.style.visibility = "hidden";
     gameOverDiv.style.visibility = "hidden";
     successDiv.style.visibility = "hidden";
-    stageLabel.textContent="שלב "+stage;
+    stageLabel.textContent = "שלב " + stage;
 
 
     //Adding the images to the screen
@@ -166,25 +200,23 @@ function finishGame(isSuccess) {
 //going to the next stage
 function nextStage() {
 
-    stage=stage+1;
+    stage = stage + 1;
     //Checking whether a level has been passed
-    if (stage == endLevel1+1 || stage == endLevel2+1 || stage == endGame+1) {
-        if (stage == endLevel1+1) {
+    if (stage == endLevel1 + 1 || stage == endLevel2 + 1 || stage == endGame + 1) {
+        if (stage == endLevel1 + 1) {
             nextLevText.textContent = "כל הכבוד! עברת לשלב 2"
-            nextLevelDiv.style.visibility = "visible";
         };
-        if (stage == endLevel2+1) {
+        if (stage == endLevel2 + 1) {
             nextLevText.textContent = "כל הכבוד! עברת לשלב 3"
-            nextLevelDiv.style.visibility = "visible";
         };
-        if (stage == endGame+1) {
+        if (stage == endGame + 1) {
             nextLevText.textContent = "כל הכבוד! סיימת את המשחק בהצלחה"
-            nextLevelDiv.style.visibility = "visible";
-            butt=document.getElementById("nextLeButton");
-            butt.style.visibility="hidden";
+            butt = document.getElementById("nextLeButton");
+            butt.style.visibility = "hidden";
         };
+        nextLevelDiv.style.visibility = "visible";
     }
     else { startClick(); }
-    
+
 
 }

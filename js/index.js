@@ -34,7 +34,7 @@ function renderCourses(filter) {
             }
             else if(course.name == "עברית")
             {
-
+                button.id="hebrewGame"
             }
             else //(course.name !== "חשבון" && course.name !== "עברית")
             {
@@ -141,4 +141,9 @@ document.getElementById("calcGame").addEventListener('click', function() {
         window.location.href = '../html/calcGame.html';
     }, 500);});
 
-
+    document.getElementById("hebrewGame").addEventListener('click', function() {
+        document.body.classList.add('fade-out');
+        setTimeout(function() {
+            window.location.href = '../html/hebrew.html';
+        }, 500);});
+    

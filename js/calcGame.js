@@ -323,8 +323,13 @@ document
   });
 
 
-    function saveStars() { 
-    localStorage.setItem("numOfStar", [actions["addition"].numOfStar, actions["subtraction"].numOfStar, actions["multiplication"].numOfStar, actions["division"].numOfStar]);
+function saveStars() { 
+
+    currentUser.mathStars.add = actions["addition"].numOfStar;
+    currentUser.mathStars.sub = actions["subtraction"].numOfStar;
+    currentUser.mathStars.mul = actions["multiplication"].numOfStar;
+    currentUser.mathStars.div = actions["division"].numOfStar;
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
  }
 
   document.getElementById("go-home").addEventListener('click', function() {

@@ -95,7 +95,7 @@ function login() {
 
     // Successful login
     localStorage.setItem('currentUser', JSON.stringify(user));
-    alert('Login successful!');
+    alert('נכנסת בהצלחה!');
  
     // window.currentUser = user;
 

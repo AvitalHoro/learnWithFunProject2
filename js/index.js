@@ -1,3 +1,5 @@
+
+
 var showButton = document.getElementById('profile-img-header');
 showButton.addEventListener('click', showProfileSection);
 var loginDiv=document.getElementById("overlay2");
@@ -108,8 +110,10 @@ function showProfileSection() {
     var hebrewLevel=document.getElementById("hebrew-level");
     var hebrewScore=document.getElementById("score-number");
     var currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    userName.textContent= currentUser.firstName+" "+currentUser.lastName;
-    plusStars.textContent= currentUser.preDate;
+    lastVisit=currentUser.preDate.getDate()+"/"+currentUser.preDate.getMonth()+"/"+currentUser.preDate.getFullYear();
+    userName.textContent= "שלום" + "\n" + currentUser.userName;
+    starsSum=currentUser.mathStars.add+currentUser.mathStars.sub+currentUser.mathStars.mult+currentUser.mathStars.div+hebrewScore;
+    plusStars.textContent= lastVisit;
     subStars.textContent= "חיסור: "+currentUser.mathStars.sub+" כוכבים";
     multStars.textContent= "כפל: "+currentUser.mathStars.mult+" כוכבים";
     divStars.textContent= "חילוק: "+currentUser.mathStars.div+" כוכבים";
@@ -131,10 +135,7 @@ function showProfileSection() {
     //     }
     // };
 
-    if(currentUser.gender=="זכר")
-    {
-        document.getElementById("profile-img-header").src= "../img/boy_profile.png"
-    }
+
 
 };
 
@@ -162,4 +163,13 @@ document.getElementById("calcGame").addEventListener('click', function() {
         }, 500);});
 
 
-    
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+        if(currentUser.gender=="זכר")
+        {
+            document.getElementById("profile-img-header").src= "../img/boy_profile.png"
+        }
+        else
+        {
+            document.getElementById("profile-img-header").src= "../img/girl_profile.png"
+        }

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup Page</title>
-    <link rel="stylesheet" href="../css/signup.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 
 
@@ -13,11 +13,13 @@
 <body>
 
     <div class="signup-box">
-        <h2>הרשם כמשתמש חדש</h2>
-        <input id="firstName" type="text" placeholder="שם פרטי">
-        <input id="lastName" type="text" placeholder="שם משפחה">
-        <input id="email" type="email" placeholder="מייל">
-        <div>
+        <h3>הרשם כמשתמש חדש</h3>
+        <input class="glowing-border" id="firstName" type="text" placeholder="שם פרטי">
+        <input class="glowing-border" id="lastName" type="text" placeholder="שם משפחה">
+        <input class="glowing-border" id="email" type="email" placeholder="מייל">
+        <div class="gender">
+
+            <div class="Tsign" class="no-margin">מין</div>
             <label>
                 <input type="radio" name="gender" value="male">
                 <span class="checkmark"></span> זכר
@@ -27,12 +29,12 @@
                 <span class="checkmark"></span> נקבה
             </label>
         </div>
-        <input id="userName" type="text" placeholder="שם שמתמש לבחירתך">
-        <input id="password" type="password" placeholder="סיסמא">
-        <input id="password2" type="password" placeholder="הכנס סיסמא שנית">
-        <button onclick="signupClick()">הרשם</button>
-        <p>?כבר רשום אצלינו</p>
-        <button onclick="showLogin()">התחבר</button>
+        <input class="glowing-border" id="userName" type="text" placeholder="שם משתמש לבחירתך">
+        <input class="glowing-border" id="password" type="password" placeholder="סיסמא">
+        <input class="glowing-border" id="password2" type="password" placeholder="הכנס סיסמא שנית">
+        <button onclick="signupClick()"><div class="Bsign">הירשם</div></button>
+        <div class="Tsign">כבר רשום אצלינו?</div>
+        <button onclick="showLogin()"><div class="Bsign">התחבר</div></button>
     </div>
 
 </body>

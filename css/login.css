@@ -6,7 +6,6 @@ body {
 }
 
 input {
-    background-color: blue;
     width: 80%;
     padding: 12px;
     margin: 8px 0;
@@ -14,14 +13,15 @@ input {
     border: 1px solid #ccc;
     box-sizing: border-box;
     text-align: start;
+    font-family: 'Fredoka', sans-serif;
 }
 
-.login-box {
+.login-box, .signup-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: 95vh;
     margin: 0px;
     overflow: hidden;
 }
@@ -37,16 +37,17 @@ button {
     font-size: 100%;
     font-family: 'Fredoka', sans-serif;
     border-radius: 7px;
+}
 
+p {
+    margin-bottom: 0px;
 }
 
 h3 {
     margin: 0px;
 }
 
-p {
-    margin-bottom: 0px;
-}
+
 
 img {
     width: 300px;
@@ -66,3 +67,51 @@ button:hover {
     border-color: #9ecaed;
     box-shadow: 0 0 10px #9ecaed;
 }
+
+.gender {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;   
+}
+
+label {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+
+.no-margin {
+    margin: 0px;
+}
+
+.signup-box * {
+    height: 35px;
+    margin: 3px;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.Tsign {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0px;
+}
+.Bsign {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+    margin: 0px;
+    height: 100%;
+    padding-top: 0px;
+    margin-top: -11px;
+}
+

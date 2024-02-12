@@ -58,10 +58,11 @@ function signupClick() {
         return; // Stop registration process
     }
 
-
+    index=users.length-1;
     
     // Create user object
     var newUser = {
+        index: index,
         firstName: firstName,
         lastName: lastName,
         email: email,

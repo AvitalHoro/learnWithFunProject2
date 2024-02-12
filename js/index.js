@@ -110,9 +110,11 @@ function showProfileSection() {
     var hebrewLevel=document.getElementById("hebrew-level");
     var hebrewScore=document.getElementById("score-number");
     var currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    lastVisit=currentUser.preDate.getDate()+"/"+currentUser.preDate.getMonth()+"/"+currentUser.preDate.getFullYear();
+    // lastVisit=currentUser.preDate.getDate()+"/"+currentUser.preDate.getMonth()+"/"+currentUser.preDate.getFullYear();
     userName.textContent= "שלום" + "\n" + currentUser.userName;
-    starsSum=currentUser.mathStars.add+currentUser.mathStars.sub+currentUser.mathStars.mult+currentUser.mathStars.div+hebrewScore;
+    totalPoints=totall(currentUser);
+    var rate=calcRate(currentUser);
+   
     plusStars.textContent= lastVisit;
     subStars.textContent= "חיסור: "+currentUser.mathStars.sub+" כוכבים";
     multStars.textContent= "כפל: "+currentUser.mathStars.mult+" כוכבים";
@@ -140,6 +142,27 @@ function showProfileSection() {
 };
 
 
+
+//sum the total points of an user
+function totall(user){
+    total= user.mathStars.add+user.mathStars.sub+user.mathStars.mult+user.mathStars.div+user.hebrewScore;
+    return total;
+}
+
+function sortByTotal(u1,u2){
+    return -(totall(u1) - totall(u2))
+}
+
+//The function calculates the rating of the player in relation to the other users
+function calcRate(user){
+    const users= JSON.parse(localStorage.getItem('users'));
+    var copy=[...users];
+    copy.sort(sortByTotal);
+    i= copy.findIndex(u=>u.username===user.username);
+    return i+1;
+}
+
+//logout from the user account
 function logout(){
     var ProfileDiv = document.getElementById('side-profile');
     ProfileDiv.style.display = 'none';

@@ -48,10 +48,13 @@ var stage=currentUser.hebrewLevel;
 var level=(stage > endLevel2) ? 3 : (stage > endLevel1) ? 2 : 1;   //the current stage of the player
 const userName=currentUser.firstName+" "+currentUser.lastName;
 const userNamePlace=document.getElementById("player-name");
+const rate=document.getElementById("player-rate");
 userNamePlace.textContent=userName;
 levelLabel.textContent="רמה "+level;
 stageLabel.textContent="שלב "+stage;
 pointsLabel.textContent=userScore;
+
+rate.textContent=calcRate();
 
 function addRandAttribute(from) {
     var temp = from.map(function (im) {
@@ -106,6 +109,7 @@ function startClick() {
     levelLabel.textContent="רמה "+level;
     pointsLabel.textContent=currentUser.hebrewScore+" נקודות"
     wordDiv.visibility="visible";
+    level=(stage > endLevel2) ? 3 : (stage > endLevel1) ? 2 : 1;   //the current stage of the player
 
 
     //Adding the images to the screen
@@ -203,6 +207,9 @@ function nextStage() {
         nextLevelDiv.style.visibility = "visible";
     }
     else { startClick(); }
+}
 
-
+//The function calculates the rating of the player in relation to other users
+function calcRate(){
+    const users=localStorage.getItem('users')
 }

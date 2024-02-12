@@ -49,7 +49,9 @@ var blockLoginTimer;
 // ];
 
 // Save the initial users array to Local Storage
-localStorage.setItem('users', JSON.stringify(users));
+
+
+// localStorage.setItem('users', JSON.stringify(users));
 
 function showSignup() {
     loginFrame.src = '/html/signup.html';

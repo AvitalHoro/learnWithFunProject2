@@ -59,12 +59,6 @@ body {
     /* flex-direction: column; */
 }
 
-/* #general-div{
-    height: 100%;
-    display: flex;
-    background-color: aqua;
-} */
-
 #word-div{
     background-color: rgb(237, 241, 241);
     text-align: center;
@@ -122,13 +116,9 @@ body {
 }
 
 #nextLeButton{
-    /* position: absolute; */
     font-size: 24px;
     padding: 20px;
     margin-bottom: 5%;
-    /* top: 50%;
-    left: 50%; */
-    /* transform: translate(-50%, -50%); */
     z-index: 1;
     display: flex;
     align-items: center;
@@ -257,7 +247,6 @@ body {
     padding: 20px; 
     top: 0%;
     right: 0%;
-    /* transform: translate(-50%, -50%); */
     z-index: 1;
     display: flex;
     align-items: center;
@@ -305,3 +294,7 @@ button {
     border-radius: 25px;
     background-color: var(--color6);
 } 
+
+#player-points, #player-level{
+    font-size: 20px;
+}

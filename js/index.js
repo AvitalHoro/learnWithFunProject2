@@ -4,8 +4,6 @@ var loginDiv = document.getElementById("overlay2");
 var loginIframe = document.getElementById("login-frame");
 var overlay = document.getElementById("overlay");
 
-
-
 //an array contains the courses that the user can play
 var courses = [
   { name: "עברית", imageUrl: "../img/hebrew.png" },
@@ -19,8 +17,6 @@ var courses = [
 // The function displays the user's profile section
 var showButton = document.getElementById("profile-img-header");
 showButton.addEventListener("click", showProfileSection);
-
-
 
 // If the user is already connected, hide the login div
 if (localStorage.getItem("isConnected") === "true") {
@@ -174,28 +170,36 @@ function logout() {
   localStorage.setItem("isConnected", false);
 }
 
+document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("not-valid-button")) {
+      openPopup("not-valid-popup");
+    } else if (event.target.classList.contains("back-to-website-button")) {
+      closePopup("not-valid-popup");
+    }
+  });
 
-
-document.getElementById("calcGame").addEventListener('click', function() {
-    document.body.classList.add('fade-out');
-    setTimeout(function() {
-        window.location.href = '../html/calcGame.html';
-    }, 500);});
-
-    document.getElementById("hebrewGame").addEventListener('click', function() {
-        document.body.classList.add('fade-out');
-        setTimeout(function() {
-            window.location.href = '../html/hebrew.html';
-        }, 500);});
-
-
-        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-        if(currentUser.gender=="זכר")
-        {
-            document.getElementById("profile-img-header").src= "../img/boy_profile.png"
+// add link to hebrew and calc games to the correct buttons according search event
+document.addEventListener("click", function (event) {
+        if(event.target.id === ("hebrewGame")){
+                document.body.classList.add("fade-out");
+                setTimeout(function () {
+                    window.location.href = "../html/hebrew.html";
+                }, 500);
         }
-        else
-        {
-            document.getElementById("profile-img-header").src= "../img/girl_profile.png"
+        else if (event.target.id === ("calcGame")) {
+                document.body.classList.add("fade-out");
+                setTimeout(function () {
+                    window.location.href = "../html/calcGame.html";
+                }, 500);
         }
+});
+
+
+//adjust the profile image according to gender
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+if (currentUser.gender == "זכר") {
+    document.getElementById("profile-img-header").src = "../img/boy_profile.png";
+} else {
+    document.getElementById("profile-img-header").src = "../img/girl_profile.png";
+}

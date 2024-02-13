@@ -1,13 +1,7 @@
+//js code for the home page
 
+//localStorage.clear();
 
-var showButton = document.getElementById('profile-img-header');
-showButton.addEventListener('click', showProfileSection);
-var loginDiv=document.getElementById("overlay2");
-var loginIframe=document.getElementById("login-frame");
-// localStorage.setItem('isConnected',false);
-if(localStorage.getItem('isConnected')==='true'){
-    loginIframe.src='';
-    loginDiv.style.visibility="hidden";}
 
 var courses = [
     { name: "עברית", imageUrl: "../img/hebrew.png" },
@@ -17,6 +11,14 @@ var courses = [
     { name: "ציור", imageUrl: "../img/drawing.png" },
     { name: "תנ\"ך", imageUrl: "../img/bibble.png" },
 ];
+
+var showButton = document.getElementById('profile-img-header');
+showButton.addEventListener('click', showProfileSection);
+var loginDiv=document.getElementById("overlay2");
+var loginIframe=document.getElementById("login-frame");
+if(localStorage.getItem('isConnected')==='true'){
+    loginIframe.src='';
+    loginDiv.style.visibility="hidden";}
 
 
 function renderCourses(filter) {
@@ -90,14 +92,13 @@ document.addEventListener('click', function(event) {
     }
 });
 
+//The function display the current user's information
 function showProfileSection() {
     var ProfileDiv = document.getElementById('side-profile');
 
     // Toggle the visibility of the target div
     if (ProfileDiv.style.display === 'none') {
         ProfileDiv.style.display = 'flex';
-        // ProfileDiv.style.width = '150px';
-
     } else {
         ProfileDiv.style.display = 'none';
     }
@@ -109,54 +110,29 @@ function showProfileSection() {
     var rating=document.getElementById("user-rating");
     var currentUser = JSON.parse(localStorage.getItem("currentUser"));
     
-    userName.innerText= "שלום" + "\n" + currentUser.username;
+    //display the users' details
     SumStars=currentUser.mathStars.add+currentUser.mathStars.sub+currentUser.mathStars.mult+currentUser.mathStars.div;
     Stars.innerText= "מספר כוכבים" + "\n" + SumStars;
+
+
     const date = new Date(currentUser.preDate);
     lastVisit.innerText = "הפעם האחרונה שלך פה"+"\n"+date.getDate()+'/'+(date.getMonth() + 1)+'/'+date.getFullYear()+" "+date.getHours()+':'+date.getMinutes();
     userEmail.innerText="המייל שלך" + "\n"+ currentUser.email;
-    rating.innerText="דירוג" + "\n"+getRating();
-
-
-    // lastVisit=currentUser.preDate.getDate()+"/"+currentUser.preDate.getMonth()+"/"+currentUser.preDate.getFullYear();
-    userName.textContent= "שלום" + "\n" + currentUser.userName;
-    totalPoints=totall(currentUser);
-    var rate=calcRate(currentUser);
-   
-    plusStars.textContent= lastVisit;
-    subStars.textContent= "חיסור: "+currentUser.mathStars.sub+" כוכבים";
-    multStars.textContent= "כפל: "+currentUser.mathStars.mult+" כוכבים";
-    divStars.textContent= "חילוק: "+currentUser.mathStars.div+" כוכבים";
-    
-    // var aaa = {
-    //     firstName: firstName,
-    //     lastName: lastName,
-    //     email: email,
-    //     gender: gender,
-    //     username: username,
-    //     password: password,
-    //     hebrewScore:0,
-    //     hebrewLevel:0,
-    //     mathStars:{
-    //         add: 0,
-    //         sub: 0,
-    //         mult: 0,
-    //         div: 0
-    //     }
-    // };
-
-
-
+    userName.textContent= "שלום" + "\n" + currentUser.username;
+    totalPoints=totall(currentUser);  //the sum of the users' stars from the games
+    var rate=calcRate(currentUser);  //calc the rating relative to other users
+    rating.innerText="דירוג" + "\n"+rate;
 };
 
 
 
 //sum the total points of an user
 function totall(user){
-    total= user.mathStars.add+user.mathStars.sub+user.mathStars.mult+user.mathStars.div+user.hebrewScore;
+    var total= user.mathStars.add+user.mathStars.sub+user.mathStars.mult+user.mathStars.div+user.hebrewScore;
     return total;
 }
 
+//help function for comparison between points of two players
 function sortByTotal(u1,u2){
     return -(totall(u1) - totall(u2))
 }
@@ -180,6 +156,100 @@ function logout(){
     loginFrame.src='/html/login.html';
     localStorage.setItem('isConnected',false);
 }
+
+
+// // Function to set a cookie with a specified name, value, and expiration time
+// function setCookie(name, value, expirationMinutes) {
+//     var date = new Date();
+//     date.setTime(date.getTime() + (expirationMinutes * 60 * 1000)); // Convert minutes to milliseconds
+//     var expires = "expires=" + date.toUTCString();
+//     document.cookie = name + "=" + value + ";" + expires + ";path=/";
+// }
+
+
+// //cookie
+
+// // Set a cookie with a specified name, value, and expiration time
+// function setCookie(name, value, expirationMinutes) {
+//     var date = new Date();
+//     date.setTime(date.getTime() + (expirationMinutes * 60 * 1000));
+//     var expires = "expires=" + date.toUTCString();
+//     document.cookie = name + "=" + value + ";" + expires + ";path=/";
+// }
+
+// // Get the value of a cookie by name
+// function getCookie(name) {
+//     var cookieName = name + "=";
+//     var decodedCookie = decodeURIComponent(document.cookie);
+//     var cookieArray = decodedCookie.split(';');
+//     for (var i = 0; i < cookieArray.length; i++) {
+//         var cookie = cookieArray[i];
+//         while (cookie.charAt(0) === ' ') {
+//             cookie = cookie.substring(1);
+//         }
+//         if (cookie.indexOf(cookieName) === 0) {
+//             return cookie.substring(cookieName.length, cookie.length);
+//         }
+//     }
+//     return "";
+// }
+
+// // Check if the session has expired
+// function isSessionExpired() {
+//     var lastActivityTime = parseInt(getCookie('lastActivityTime'));
+//     if (!isNaN(lastActivityTime)) {
+//         var sessionDuration = 15; // Session duration in minutes
+//         var currentTime = Math.floor(Date.now() / 1000); // Convert milliseconds to seconds
+//         return (currentTime - lastActivityTime) > (sessionDuration * 60);
+//     }
+//     return true; // Assume session is expired if last activity time is not available
+// }
+
+// // Handle user activity
+// function handleActivity() {
+//     setCookie('lastActivityTime', Math.floor(Date.now() / 1000), 30); // Reset last activity time and extend cookie expiration by 30 minutes
+// }
+
+// // Check if the session has expired
+// if (isSessionExpired()) {
+//     // Expire the session and prompt the user to log in again
+//     localStorage.setItem('isConnected', false);
+//     console.log("Session expired. Please log in again.");
+// } else {
+//     // Session is still valid, update last activity time
+//     handleActivity();
+// }
+
+
+// // Function to check if the session has expired
+// function isSessionExpired() {
+//     var lastActivityTime = parseInt(getCookie('lastActivityTime'));
+//     if (!isNaN(lastActivityTime)) {
+//         var sessionDuration = 15; // Session duration in minutes
+//         var currentTime = Math.floor(Date.now() / 1000); // Convert milliseconds to seconds
+//         return (currentTime - lastActivityTime) > (sessionDuration * 60);
+//     }
+//     return true; // Assume session is expired if last activity time is not available
+// }
+
+// // Function to handle user activity
+// function handleActivity() {
+//     setCookie('lastActivityTime', Math.floor(Date.now() / 1000), 30); // Reset last activity time and extend cookie expiration by 30 minutes
+// }
+
+// // Check if the session has expired
+// if (isSessionExpired()) {
+//     // Expire the session and prompt the user to log in again
+//     localStorage.setItem('isConnected', false);
+//     console.log("Session expired. Please log in again.");
+// } else {
+//     // Session is still valid, update last activity time
+//     handleActivity();
+// }
+
+
+
+
 
 document.getElementById("calcGame").addEventListener('click', function() {
     document.body.classList.add('fade-out');

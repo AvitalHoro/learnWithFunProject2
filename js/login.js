@@ -5,53 +5,8 @@ var body = window.parent.document.getElementById("body");  //להוסיף את �
 body.style.pointerEvents = 'none';
 loginFrame.style.pointerEvents = 'auto';
 
-
 var loginAttempts = 0;
 var blockLoginTimer;
-// var loginForm=document.getElementById("login-form");
-
-//Initialize the array of users by two users
-// var user1 = [
-//     {
-//         firstName: "שרה",
-//         lastName: "כהן",
-//         email: "sarah.cohen@gmail.com",
-//         gender: "נקבה",
-//         username: "שרה123",
-//         password: "1234",
-//         hebrewScore:6,
-//         hebrewLevel:1,
-//         mathStars:{
-//             add: 2,
-//             sub: 0,
-//             mult: 1,
-//             div: 0},
-//         preDate: new Date('12/3/2022'),
-//         currentDate: new Date('12/3/2022')
-//     },
-//     {
-//         firstName: "יוני",
-//         lastName: "נתן",
-//         email: "yoni@gmail.com",
-//         gender: "זכר",
-//         username: "yonini",
-//         password: "6789",
-//         hebrewScore:10,
-//         hebrewLevel:1,
-//         mathStars:{
-//             add: 1,
-//             sub: 1,
-//             mult: 0,
-//             div: 0},
-//         preDate: new Date(2023,3,15,14,23,0),
-//         currentDate: new Date(2023,3,15,14,23,0)
-//     }
-// ];
-// localStorage.setItem('users',JSON.stringify(users));
-// Save the initial users array to Local Storage
-
-
-// localStorage.setItem('users', JSON.stringify(users));
 
 function showSignup() {
     loginFrame.src = '/html/signup.html';
@@ -64,7 +19,7 @@ function login() {
 
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
-
+   
     //check if the fields are full
     if (username == '' || password == '') {
         alert("יש להכניס שם משתמש וסיסמא");
@@ -107,16 +62,15 @@ function login() {
     localStorage.setItem('isConnected', true);
 }
 
-
+//freese the option to login for 30 seconds
 function blockLogin() {
-    //Blocking further login attempts for one minute, after five incorrect attempts
     document.getElementById('login-button').disabled = true;
-    // document.getElementById('error-message').innerText = "Too many failed login attempts. Please try again later.";
-    // document.getElementById('error-message').style.display = 'block';
     blockLoginTimer = setTimeout(function () {
         document.getElementById('login-button').disabled = false;
+        document.getElementById('login-button').style.backgroundColor='blue';
         document.getElementById('error-message').style.display = 'none';
         loginAttempts = 0; // Reset login attempts counter
     }, 30000); // Blocked for 0.5 minute
+
 }
 

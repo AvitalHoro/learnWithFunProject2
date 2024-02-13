@@ -10,7 +10,6 @@ var images = [
     { name: "כובע", src: "/img/hat.jpg" },
 
     { name: "חיפושית", src: "/img/hipushit.jpg" },
-    { name: "גלידה", src: "/img/iceCream.jpg" },
     { name: "קונכיה", src: "/img/kunchia.jpg" },
     { name: "תרוד", src: "/img/tarvad.jpeg" },
     { name: "להבה", src: "/img/lehava.jpg" },
@@ -18,7 +17,6 @@ var images = [
 
     { name: "אגרטל", src: "/img/agartal.jpg" },
     { name: "מנוף", src: "/img/manof.png" },
-    { name: "עב", src: "/img/av.jpg" },
     { name: "יעה", src: "/img/yae.jpg" },
     { name: "סייח", src: "/img/syach.jpg" },
     { name: "קלחת", src: "/img/kalahat.jpg" }
@@ -106,6 +104,7 @@ function startClick() {
     gameOverDiv.style.visibility = "hidden";
     successDiv.style.visibility = "hidden";
     stageLabel.textContent = "שלב " + stage;
+    level=(stage > endLevel2) ? 3 : (stage > endLevel1) ? 2 : 1;   //the current stage of the player
     levelLabel.textContent="רמה "+level;
     pointsLabel.textContent=currentUser.hebrewScore+" נקודות"
     wordDiv.visibility="visible";
@@ -172,14 +171,15 @@ function finishGame(isSuccess) {
     }
 
     if (isSuccess == true) {
-        // update the user details
+        // update the users' points
         pointsToAdd=(stage > endLevel2) ? 7 : (stage > endLevel1) ? 4 : 2;
         currentUser.hebrewScore+=pointsToAdd;
         stage = stage + 1;
         currentUser.hebrewLevel=stage;
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
         var users = JSON.parse(localStorage.getItem('users'));
-
+        users[currentUser.index]=currentUser;
+        localStorage.setItem('users', JSON.stringify(users));
         
         successDiv.style.visibility = "visible"; }
     else { gameOverDiv.style.visibility = "visible"; }
@@ -209,7 +209,3 @@ function nextStage() {
     else { startClick(); }
 }
 
-//The function calculates the rating of the player in relation to other users
-function calcRate(){
-    const users=localStorage.getItem('users')
-}

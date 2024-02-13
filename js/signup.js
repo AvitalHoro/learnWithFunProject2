@@ -58,7 +58,7 @@ function signupClick() {
         return; // Stop registration process
     }
 
-    index=users.length-1;
+    index=users.length;
     
     // Create user object
     var newUser = {

@@ -174,6 +174,7 @@ function logout() {
   localStorage.setItem("isConnected", false);
 }
 
+<<<<<<< HEAD
 // // Function to set a cookie with a specified name, value, and expiration time
 // function setCookie(name, value, expirationMinutes) {
 //     var date = new Date();
@@ -285,3 +286,30 @@ if (currentUser.gender == "זכר") {
 } else {
   document.getElementById("profile-img-header").src = "../img/girl_profile.png";
 }
+=======
+
+
+document.getElementById("calcGame").addEventListener('click', function() {
+    document.body.classList.add('fade-out');
+    setTimeout(function() {
+        window.location.href = '../html/calcGame.html';
+    }, 500);});
+
+    document.getElementById("hebrewGame").addEventListener('click', function() {
+        document.body.classList.add('fade-out');
+        setTimeout(function() {
+            window.location.href = '../html/hebrew.html';
+        }, 500);});
+
+
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+        if(currentUser.gender=="זכר")
+        {
+            document.getElementById("profile-img-header").src= "../img/boy_profile.png"
+        }
+        else
+        {
+            document.getElementById("profile-img-header").src= "../img/girl_profile.png"
+        }
+>>>>>>> 939ce1f98c310028aa47a85f9289cf1e97d4000c

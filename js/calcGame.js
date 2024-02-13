@@ -34,7 +34,7 @@ const actions = {
   multiplication: {
     iconName: "fa-xmark",
     result: (a, b) => a * b,
-    numOfStar: currentUser ? currentUser.mathStars.mul : 0,
+    numOfStar: currentUser ? currentUser.mathStars.mult : 0,
   },
   division: {
     iconName: "fa-divide",

@@ -192,12 +192,10 @@ function finishGame(isSuccess) {
 //going to the next stage
 function nextStage() {
 
-    // stage = stage + 1;
     //Checking whether a level has been passed
     if (stage == endLevel1 + 1 || stage == endLevel2 + 1 || stage == endGame + 1) {
         if (stage == endLevel1 + 1) {
             nextLevText.textContent = "כל הכבוד! עברת לשלב 2"
-            
         };
         if (stage == endLevel2 + 1) {
             nextLevText.textContent = "כל הכבוד! עברת לשלב 3"
@@ -208,7 +206,18 @@ function nextStage() {
             butt.style.visibility = "hidden";
         };
         nextLevelDiv.style.visibility = "visible";
+        playSound("../sound/trumpet.mpeg", 4); 
     }
     else { startClick(); }
 }
 
+//function to play the sound in a new level
+function playSound(soundF, time) {
+    const audio = new Audio(soundF);
+    audio.play();
+  
+    // Stop audio after the time
+    setTimeout(() => {
+      audio.pause();
+    }, duration * 1000);
+  }

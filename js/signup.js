@@ -54,7 +54,6 @@ function signupClick() {
     });
     if (existingUser) {
         alert('שם המשתמש כבר קיים, נסה שם אחר');
-        // document.getElementById('error-message').style.display = 'block';
         return; // Stop registration process
     }
 

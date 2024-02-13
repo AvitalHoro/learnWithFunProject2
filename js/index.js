@@ -1,8 +1,5 @@
 //js code for the home page
 
-//localStorage.clear();
-
-
 var courses = [
     { name: "עברית", imageUrl: "../img/hebrew.png" },
     { name: "חשבון", imageUrl: "../img/math.png" },
@@ -48,9 +45,7 @@ function renderCourses(filter) {
             }
             else //(course.name !== "חשבון" && course.name !== "עברית")
             {
-                button.classList.add('not-valid-button');
-                //var buttons = document.getElementsByClassName('not-valid-button');
-    
+                button.classList.add('not-valid-button');    
             }
             button.textContent = course.name;
 

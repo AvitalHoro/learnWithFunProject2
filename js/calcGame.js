@@ -1,3 +1,4 @@
+//js code for the calc game
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 const actions = {

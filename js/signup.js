@@ -1,13 +1,13 @@
+//js code for the signup page
+
 var loginDiv=window.parent.document.getElementById("overlay2");
 var loginFrame = window.parent.document.getElementById("login-frame");
-
-// window.parent.document.getElementById('signup-form').addEventListener('submit', function(event)
 var body = window.parent.document.getElementById("body");  //להוסיף את התז בדף הבית
 body.style.pointerEvents = 'none';
 loginFrame.style.pointerEvents = 'auto';
 
 
-
+//Sign-up attempt or sign-up
 function signupClick() {
 
     var firstName = document.getElementById('firstName').value;
@@ -46,7 +46,7 @@ function signupClick() {
     }
 
 
-    var users = JSON.parse(localStorage.getItem('users')) || [];
+    var users = JSON.parse(localStorage.getItem('users')) || [];  //the array of the users from the local storage
 
     // Check if username already exists
     var existingUser = users.find(function(user) {
@@ -99,7 +99,7 @@ function signupClick() {
 
 }
 
-
+//function to change to the login page
 function showLogin() {
     loginFrame.src = '/html/login.html';
 }

@@ -23,50 +23,44 @@ var images = [
 ]
 
 
-const endLevel1 = 5;
-const endLevel2 = 10;
-const endGame = 15;
+
+//elements from the window
 const gameScreen = document.getElementById("gameScreen");
 const imagesDiv = document.getElementById("images-div");
 const startButton = document.getElementById("start-button");
 const wordDiv = document.getElementById("word-div");
 const successDiv = document.getElementById("success-div");
 const gameOverDiv = document.getElementById("gameOver-div");
-var numOfImg = 6;   //the number of images that take part in every stage
-var mone = 0;   //count how much images passed the screen
-var isClicked = false;   //ia the player clicked on a image
 const nextLevText = document.getElementById("nextLevText-span");
 const nextLevelDiv = document.getElementById("nextLevel-div");
 const stageLabel = document.getElementById("stage-label");
 const levelLabel = document.getElementById("player-level");
 const pointsLabel = document.getElementById("player-points");
-var currentUser=JSON.parse(localStorage.getItem('currentUser'));
+const userNamePlace=document.getElementById("player-name");
+const rate=document.getElementById("player-rate");
+
+var currentUser=JSON.parse(localStorage.getItem('currentUser'));  //the current user object
+
+//variables for the game
+const endLevel1 = 5;
+const endLevel2 = 10;
+const endGame = 15;
+var numOfImg = 6;   //the number of images that take part in every stage
+var mone = 0;   //count how much images passed the screen
+var isClicked = false;   //ia the player clicked on a image
 var userScore=currentUser.hebrewScore;
 var stage=currentUser.hebrewLevel;
 var level=(stage > endLevel2) ? 3 : (stage > endLevel1) ? 2 : 1;   //the current stage of the player
 const userName=currentUser.firstName+" "+currentUser.lastName;
-const userNamePlace=document.getElementById("player-name");
-const rate=document.getElementById("player-rate");
+
+//intialize labels
 userNamePlace.textContent=userName;
 levelLabel.textContent="רמה "+level;
 stageLabel.textContent="שלב "+stage;
 pointsLabel.textContent=userScore;
-
 rate.textContent=calcRate();
 
-function addRandAttribute(from) {
-    var temp = from.map(function (im) {
-        var newElement = Object.assign({}, im);
-        newElement.randNum = randomNum();
-        return newElement;
-    });
-    return temp;
-}
-
-function randomNum() {
-    return Math.floor(Math.random() * images.length);
-}
-
+//creating an array of images for the current stage
 function createArr() {
 
     imgCopy = addRandAttribute(images);
@@ -86,16 +80,25 @@ function createArr() {
     return imgCopy;
 }
 
+//functions for random numbers to mix the pictures
+function addRandAttribute(from) {
+    var temp = from.map(function (im) {
+        var newElement = Object.assign({}, im);
+        newElement.randNum = randomNum();
+        return newElement;
+    });
+    return temp;
+}
 
+function randomNum() {
+    return Math.floor(Math.random() * images.length);
+}
 
 
 
 //A function to "create" the current game and start it
 function startClick() {
 
-/* <p id="player-points"></p>
-<p id="player-rate-label">מדורג במקום ה <span id="player-rate"></span></p>
- */
 
     mone = 0;
     isClicked = false;

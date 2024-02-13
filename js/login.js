@@ -1,4 +1,4 @@
-
+//js code for the login page
 var loginDiv = window.parent.document.getElementById("overlay2");
 var loginFrame = window.parent.document.getElementById("login-frame");
 var body = window.parent.document.getElementById("body");  //להוסיף את התז בדף הבית
@@ -8,11 +8,12 @@ loginFrame.style.pointerEvents = 'auto';
 var loginAttempts = 0;
 var blockLoginTimer;
 
+//function to change to the signup page
 function showSignup() {
     loginFrame.src = '/html/signup.html';
 }
 
-
+//checks and login function
 function login() {
 
     localStorage.setItem('isConnected', false);
@@ -26,10 +27,10 @@ function login() {
         return;
     }
 
-    var users = JSON.parse(localStorage.getItem('users')) || [];
+    var users = JSON.parse(localStorage.getItem('users')) || [];  //the users array from the local storage
 
 
-    // Check if username exists in Local Storage
+    //Check if username exists in Local Storage
     var user = users.find(function (user) {
         return user.username === username && user.password === password;
     });
@@ -38,6 +39,7 @@ function login() {
     if (!user || user.password !== password) {
         alert('שם המשתמש או הסיסמא שגויים');
 
+        //Blocking a user after 5 failed attempts
         loginAttempts = loginAttempts + 1;
         if (loginAttempts >= 5) {
             blockLogin();
@@ -53,8 +55,6 @@ function login() {
     // Successful login
     localStorage.setItem('currentUser', JSON.stringify(user));
     alert('נכנסת בהצלחה!');
- 
-    // window.currentUser = user;
 
 
     loginDiv.style.visibility = "hidden";

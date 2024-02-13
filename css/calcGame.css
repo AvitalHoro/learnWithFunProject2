@@ -1,3 +1,5 @@
+/* css for the calc game */
+
 /*===== GOOGLE FONTS =====*/
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Rubik:wght@300;400;500;600&family=Varela+Round&display=swap');
 
@@ -32,10 +34,6 @@ div {
     font-family: var(--body-font);
 }
 
-/* .main-grid {
-    display: grid;
-    grid-template-columns: 2fr, 1fr;
-} */
 
 button {
     font-family: var(--body-font);
@@ -83,7 +81,7 @@ justify-content: center;
     margin-top: 0px;
     margin-bottom: 0px;
     height: 100%;
-    align-items: center; /* Center content vertically */
+    align-items: center; 
     padding-top: 8px;
 }
 
@@ -108,7 +106,7 @@ justify-content: center;
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Creates 4 columns */
     grid-gap: 10px 20px;
-    justify-content: center; /* Centers the buttons horizontally */
+    justify-content: center; 
 }
 
 .digit-button {
@@ -166,10 +164,9 @@ justify-content: center;
 }
 
 .star-container {
-    /* display: inline-block; Display as inline block to arrange stars horizontally */
-    position: fixed; /* Position the container */
-    bottom: 30px; /* Distance from the bottom of the screen */
-    right: 30px; /* Distance from the right side of the screen */
+    position: fixed;
+    bottom: 30px;
+    right: 30px; 
 }
 
 .star {
@@ -177,9 +174,6 @@ justify-content: center;
     margin-right: 10px;
 }
 
-/* .star-entry {
-    transform: rotate(0.5turn) scale(6);
-} */
 
 .speech-ballon {
     position: fixed;
@@ -189,12 +183,11 @@ justify-content: center;
 
 .speech-div {
     border-radius: 100%;
-    /* background-color: rgba(0, 0, 0, .6); */
-    position: absolute; /* Position the objects absolutely within the container */
-    top: 0; /* Place all objects at the top of the container */
-    left: 0; /* Align all objects to the left of the container */
-    width: 100%; /* Make the objects full-width */
-    height: 100%; /* Make the objects full-height */
+    position: absolute; 
+    top: 0; /
+    left: 0; 
+    width: 100%;
+    height: 100%;
     text-align: center;
 width:330px;
 height: 240px;
@@ -225,10 +218,10 @@ transform: rotate(0.01turn);
 
 .start-game {
     display: flex;
-    flex-direction: column; /* Arrange items vertically */
-    justify-content: center; /* Center items vertically */
-    align-items: center; /* Center items horizontally */
-    height: 100%; /* Full height of the viewport */
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 100%; 
 }
 
 .change-color-green {
@@ -237,10 +230,10 @@ transform: rotate(0.01turn);
 
 .instructions {
     display: none;
-    flex-direction: column; /* Arrange items vertically */
-    justify-content: center; /* Center items vertically */
-    align-items: center; /* Center items horizontally */
-    height: 100%; /* Full height of the viewport */
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100%;
 }
 
 .inline-star {
@@ -250,10 +243,10 @@ transform: rotate(0.01turn);
 
 .timer {
     display: none;
-    flex-direction: column; /* Arrange items vertically */
-    justify-content: center; /* Center items vertically */
-    align-items: center; /* Center items horizontally */
-    height: 100%; /* Full height of the viewport */
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100%;
 }
 
 .timer-video {
@@ -314,10 +307,10 @@ transform: rotate(0.01turn);
 
 .equalSpeechDiv {
     display: none;
-    flex-direction: column; /* Arrange items vertically */
-    justify-content: center; /* Center items vertically */
-    align-items: center; /* Center items horizontally */
-    height: 100%; /* Full height of the viewport */
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100%; 
     font-size: 30px;
     font-weight: bolder;
 }
@@ -354,8 +347,8 @@ transform: rotate(0.01turn);
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
-    z-index: 199; /* ensure it's above other content */
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 199; 
     display: none;
 }
   

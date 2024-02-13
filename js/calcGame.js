@@ -1,95 +1,15 @@
 //js code for the calc game
+
+//global variables
+var users = JSON.parse(localStorage.getItem("users"));
+
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-const actions = {
-  addition: { iconName: "fa-plus", result: (a, b) => a + b, numOfStar: currentUser ? currentUser.mathStars.add : 0},
-  subtraction: { iconName: "fa-minus", result: (a, b) => a - b, numOfStar: currentUser ? currentUser.mathStars.sub : 0},
-  multiplication: {
-    iconName: "fa-xmark",
-    result: (a, b) => a * b,
-    numOfStar: currentUser ? currentUser.mathStars.mul : 0,
-  },
-  division: { iconName: "fa-divide", result: (a, b) => a / b, numOfStar: currentUser ? currentUser.mathStars.div : 0},
-};
-
-const levels = {
-  level1: { timerSec: 10, range: 10 },
-  level2: { timerSec: 8, range: 10 },
-  level3: { timerSec: 6, range: 10 },
-  level4: { timerSec: 8, range: 20 },
-  level5: { timerSec: 6, range: 30 },
-};
-
-function generateExerciseAcordingLevel(operationId) {
-  exerciseElement.classList.remove("time-end", "correctly", "mistake");
-
-  stopTimer = false;
-
-  stringInputNum = "";
-
-  if (actions[operationId].numOfStar < 50) {
-    let my_level = returnLevel(actions[operationId].numOfStar);
-
-    var num1 = Math.floor(Math.random() * levels[my_level].range) + 1;
-    var num2 = Math.floor(Math.random() * levels[my_level].range) + 1;
-    if (operationId == "division")
-      while (num1 % num2 != 0) {
-        num1 = Math.floor(Math.random() * levels[my_level].range) + 1;
-        num2 = Math.floor(Math.random() * levels[my_level].range) + 1;
-      }
-    if (operationId == "subtraction") {
-      while (num1 - num2 < 0) {
-        num1 = Math.floor(Math.random() * levels[my_level].range) + 1;
-        num2 = Math.floor(Math.random() * levels[my_level].range) + 1;
-      }
-    }
-
-    exerciseElement.innerHTML = "";
-
-    current_result = actions[operationId].result(num1, num2);
-    // Create and append the content
-    exerciseElement.innerHTML = `${num1} <i class="fa-solid ${actions[operationId].iconName}"></i> ${num2} <i class="fa-solid fa-equals"></i> `;
-
-    clearAllTimeouts();
-    timer(levels[my_level].timerSec);
-  } else {
-    youWon();
-  }
-}
-
-function returnLevel(numOfStar) {
-  switch (true) {
-    case numOfStar < 10:
-      return "level1";
-    case numOfStar < 20:
-      return "level2";
-    case numOfStar < 30:
-      return "level3";
-    case numOfStar < 40:
-      return "level4";
-    case numOfStar < 50:
-      return "level5";
-  }
-}
-
-function youWon() {
-  console.log("Congratulations! You won!");
-  openPopup("not-valid-popup");
-  // Add your custom logic here
-}
-
-let AddScore = 3;
-let subScore = 1;
-let mulScore = 4;
-let divScore = 0;
-
-let result = 0;
 
 let Name = currentUser.username;
 let current_result = 0;
 let stringInputNum = "";
 let stopTimer = false;
-let operationId = "addition";
+let operationId = "addition"; //in any stage, save the user opertion select
 
 var starContainer = document.getElementById("my_stars");
 const exerciseElement = document.getElementById("the-exercise");
@@ -99,6 +19,40 @@ var myInterval = setInterval(animateStartButton, 1500);
 
 var start_button = document.getElementById("start_button");
 
+// Define the actions + - * /
+const actions = {
+  addition: {
+    iconName: "fa-plus",
+    result: (a, b) => a + b,
+    numOfStar: currentUser ? currentUser.mathStars.add : 0,
+  },
+  subtraction: {
+    iconName: "fa-minus",
+    result: (a, b) => a - b,
+    numOfStar: currentUser ? currentUser.mathStars.sub : 0,
+  },
+  multiplication: {
+    iconName: "fa-xmark",
+    result: (a, b) => a * b,
+    numOfStar: currentUser ? currentUser.mathStars.mul : 0,
+  },
+  division: {
+    iconName: "fa-divide",
+    result: (a, b) => a / b,
+    numOfStar: currentUser ? currentUser.mathStars.div : 0,
+  },
+};
+
+// Define the levels of game
+const levels = {
+  level1: { timerSec: 10, range: 10 },
+  level2: { timerSec: 8, range: 10 },
+  level3: { timerSec: 6, range: 10 },
+  level4: { timerSec: 8, range: 20 },
+  level5: { timerSec: 6, range: 30 },
+};
+
+//grow and change color of the start button in the start of game
 function animateStartButton() {
   start_button.classList.add("grow");
   setTimeout(() => {
@@ -114,6 +68,7 @@ document.getElementById("start_game_text").innerText =
 
 const actionButtons = document.getElementsByClassName("action-button");
 
+// Add event listener to the start button
 start_button.addEventListener("click", function () {
   changeSpeachDiv("start-game", "instructions");
   clearInterval(myInterval);
@@ -156,13 +111,7 @@ start_button.addEventListener("click", function () {
   });
 });
 
-function changeSpeachDiv(currentId, newId) {
-  let currentDiv = document.getElementById(currentId);
-  currentDiv.style.display = "none";
-  let newDiv = document.getElementById(newId);
-  newDiv.style.display = "flex";
-}
-
+//grow and change color of the action buttons after the start button is clicked
 function animateButtons() {
   Array.from(actionButtons).forEach((button, index) => {
     setTimeout(() => {
@@ -187,43 +136,81 @@ function defineOpertion(operationId) {
   generateExerciseAcordingLevel(operationId);
 }
 
-let numberElement = document.getElementById("number");
-
-function generateExercise(operationId) {
+// the main game function: Each period of time creates a random exercise according to the current action, and turns it off on the drawer screen.
+function generateExerciseAcordingLevel(operationId) {
   exerciseElement.classList.remove("time-end", "correctly", "mistake");
 
   stopTimer = false;
 
   stringInputNum = "";
 
-  var num1 = Math.floor(Math.random() * 10) + 1;
-  var num2 = Math.floor(Math.random() * 10) + 1;
-  if (operationId == "division")
-    while (num1 % num2 != 0) {
-      num1 = Math.floor(Math.random() * 10) + 1;
-      num2 = Math.floor(Math.random() * 10) + 1;
-    }
-  if (operationId == "subtraction") {
-    while (num1 - num2 < 0) {
-      num1 = Math.floor(Math.random() * 10) + 1;
-      num2 = Math.floor(Math.random() * 10) + 1;
-    }
-  }
-
-  exerciseElement.innerHTML = "";
-
-  current_result = actions[operationId].result(num1, num2);
   // Create and append the content
-  exerciseElement.innerHTML = `${num1} <i class="fa-solid ${actions[operationId].iconName}"></i> ${num2} <i class="fa-solid fa-equals">  </i>`;
+  if (actions[operationId].numOfStar < 50) {
+    let my_level = returnLevel(actions[operationId].numOfStar);
 
-  clearAllTimeouts();
-  timer(10);
-  // Call the timer function
-  // var Interval2=setInterval(changeNumber, 900);
+    var num1 = Math.floor(Math.random() * levels[my_level].range) + 1;
+    var num2 = Math.floor(Math.random() * levels[my_level].range) + 1;
+    if (operationId == "division")
+      while (num1 % num2 != 0) {
+        num1 = Math.floor(Math.random() * levels[my_level].range) + 1;
+        num2 = Math.floor(Math.random() * levels[my_level].range) + 1;
+      }
+    if (operationId == "subtraction") {
+      while (num1 - num2 < 0) {
+        num1 = Math.floor(Math.random() * levels[my_level].range) + 1;
+        num2 = Math.floor(Math.random() * levels[my_level].range) + 1;
+      }
+    }
+
+    exerciseElement.innerHTML = "";
+
+    current_result = actions[operationId].result(num1, num2);
+    // Create and append the content
+    exerciseElement.innerHTML = `${num1} <i class="fa-solid ${actions[operationId].iconName}"></i> ${num2} <i class="fa-solid fa-equals"></i> `;
+
+    clearAllTimeouts();
+    timer(levels[my_level].timerSec);
+  } else {
+    youWon();
+  }
 }
 
-let timeoutIds = []; // Array to store timeout IDs
+// Return the level of the game according to the number of stars
+function returnLevel(numOfStar) {
+  switch (true) {
+    case numOfStar < 10:
+      return "level1";
+    case numOfStar < 20:
+      return "level2";
+    case numOfStar < 30:
+      return "level3";
+    case numOfStar < 40:
+      return "level4";
+    case numOfStar < 50:
+      return "level5";
+  }
+}
 
+// The function that runs when the user get 5 stars
+function youWon() {
+  console.log("Congratulations! You won!");
+  openPopup("not-valid-popup");
+  // Add your custom logic here
+}
+
+// Change the display of the speech div
+function changeSpeachDiv(currentId, newId) {
+  let currentDiv = document.getElementById(currentId);
+  currentDiv.style.display = "none";
+  let newDiv = document.getElementById(newId);
+  newDiv.style.display = "flex";
+}
+
+let numberElement = document.getElementById("number");
+
+let timeoutIds = []; // Array to store timeout of timer IDs
+
+// The timer function. Determines how much time the user will have to solve an exercise
 function timer(sec) {
   for (let i = sec; i >= 0; i--) {
     let timeoutId = setTimeout(function () {
@@ -256,11 +243,13 @@ function timer(sec) {
   }
 }
 
+// Clear all timeouts of timer
 function clearAllTimeouts() {
   timeoutIds.forEach((timeoutId) => clearTimeout(timeoutId));
   timeoutIds = [];
 }
 
+// Refresh the star container
 function refreshStar() {
   starContainer.innerHTML = "";
   for (let i = 10; i <= actions[operationId].numOfStar; i += 10) {
@@ -268,6 +257,7 @@ function refreshStar() {
   }
 }
 
+// The function that runs when the user types a digit in calculator
 function typeDigit(digitId) {
   const exerciseElement = document.getElementById("the-exercise");
   stringInputNum += digitId;
@@ -314,30 +304,31 @@ function closePopup(popupId) {
   overlay.style.display = "none";
 }
 
-document
-  .getElementById("startAgain")
-  .addEventListener("click", function () {
-    closePopup("not-valid-popup");
-    actions[operationId].numOfStar = 0;
-    generateExerciseAcordingLevel(operationId);
-    refreshStar();
-  });
+document.getElementById("startAgain").addEventListener("click", function () {
+  closePopup("not-valid-popup");
+  actions[operationId].numOfStar = 0;
+  generateExerciseAcordingLevel(operationId);
+  refreshStar();
+});
 
+setInterval(saveStars, 60 * 10 * 1000); //save the stars every 10 minutes
 
-function saveStars() { 
+//save the stars in the local storage
+function saveStars() {
+  currentUser.mathStars.add = actions["addition"].numOfStar;
+  currentUser.mathStars.sub = actions["subtraction"].numOfStar;
+  currentUser.mathStars.mul = actions["multiplication"].numOfStar;
+  currentUser.mathStars.div = actions["division"].numOfStar;
+  localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  users[currentUser.index] = currentUser;
+  localStorage.setItem("users", JSON.stringify(users));
+}
 
-    currentUser.mathStars.add = actions["addition"].numOfStar;
-    currentUser.mathStars.sub = actions["subtraction"].numOfStar;
-    currentUser.mathStars.mul = actions["multiplication"].numOfStar;
-    currentUser.mathStars.div = actions["division"].numOfStar;
-    localStorage.setItem('currentUser', JSON.stringify(currentUser));
- }
-
-  document.getElementById("go-home").addEventListener('click', function() {
-    document.body.classList.add('fade-out');
-    setTimeout(function() {
-        saveStars();
-        window.location.href = '../index.html';
-
-    }, 500);}
-    );
+//go to home page
+document.getElementById("go-home").addEventListener("click", function () {
+  document.body.classList.add("fade-out");
+  setTimeout(function () {
+    saveStars();
+    window.location.href = "../index.html";
+  }, 500);
+});

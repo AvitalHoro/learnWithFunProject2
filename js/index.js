@@ -176,26 +176,18 @@ function logout() {
 
 
 
-document.getElementById("calcGame").addEventListener('click', function() {
-    document.body.classList.add('fade-out');
-    setTimeout(function() {
-        window.location.href = '../html/calcGame.html';
-    }, 500);});
+document.getElementById("calcGame").addEventListener('click', function () {
+  document.body.classList.add('fade-out');
+  setTimeout(function () {
+    window.location.href = '../html/calcGame.html';
+  }, 500);
+});
 
-    document.getElementById("hebrewGame").addEventListener('click', function() {
-        document.body.classList.add('fade-out');
-        setTimeout(function() {
-            window.location.href = '../html/hebrew.html';
-        }, 500);});
+document.getElementById("hebrewGame").addEventListener('click', function () {
+  document.body.classList.add('fade-out');
+  setTimeout(function () {
+    window.location.href = '../html/hebrew.html';
+  }, 500);
+});
 
 
-        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-        if(currentUser.gender=="זכר")
-        {
-            document.getElementById("profile-img-header").src= "../img/boy_profile.png"
-        }
-        else
-        {
-            document.getElementById("profile-img-header").src= "../img/girl_profile.png"
-        }

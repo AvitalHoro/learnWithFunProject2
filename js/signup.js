@@ -92,6 +92,12 @@ function signupClick() {
 
 
     alert('ברוך הבא! נרשמת בהצלחה');
+    if (newUser.gender == "זכר") {
+        window.parent.document.getElementById("profile-img-header").src = "../img/boy_profile.png"
+    }
+    else {
+        window.parent.document.getElementById("profile-img-header").src = "../img/girl_profile.png"
+    }
     localStorage.setItem('isConnected', true);
     loginDiv.style.visibility = "hidden";
     body.style.pointerEvents = 'auto';

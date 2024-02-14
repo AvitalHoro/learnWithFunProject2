@@ -190,4 +190,12 @@ document.getElementById("hebrewGame").addEventListener('click', function () {
   }, 500);
 });
 
+var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+if (currentUser.gender == "זכר") {
+    document.getElementById("profile-img-header").src = "../img/boy_profile.png"
+}
+else {
+    document.getElementById("profile-img-header").src = "../img/girl_profile.png"
+}
 

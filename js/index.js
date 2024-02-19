@@ -170,36 +170,30 @@ function logout() {
   localStorage.setItem("isConnected", false);
 }
 
-document.addEventListener("click", function (event) {
-    if (event.target.classList.contains("not-valid-button")) {
-      openPopup("not-valid-popup");
-    } else if (event.target.classList.contains("back-to-website-button")) {
-      closePopup("not-valid-popup");
-    }
-  });
 
-// add link to hebrew and calc games to the correct buttons according search event
-document.addEventListener("click", function (event) {
-        if(event.target.id === ("hebrewGame")){
-                document.body.classList.add("fade-out");
-                setTimeout(function () {
-                    window.location.href = "../html/hebrew.html";
-                }, 500);
-        }
-        else if (event.target.id === ("calcGame")) {
-                document.body.classList.add("fade-out");
-                setTimeout(function () {
-                    window.location.href = "../html/calcGame.html";
-                }, 500);
-        }
+
+document.getElementById("calcGame").addEventListener('click', function () {
+  document.body.classList.add('fade-out');
+  setTimeout(function () {
+    window.location.href = '../html/calcGame.html';
+  }, 500);
+});
+
+document.getElementById("hebrewGame").addEventListener('click', function () {
+  document.body.classList.add('fade-out');
+  setTimeout(function () {
+    window.location.href = '../html/hebrew.html';
+  }, 500);
 });
 
 
-//adjust the profile image according to gender
-const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-if (currentUser.gender == "זכר") {
-    document.getElementById("profile-img-header").src = "../img/boy_profile.png";
-} else {
-    document.getElementById("profile-img-header").src = "../img/girl_profile.png";
-}
+        if(currentUser.gender=="זכר")
+        {
+            document.getElementById("profile-img-header").src= "../img/boy_profile.png"
+        }
+        else
+        {
+            document.getElementById("profile-img-header").src= "../img/girl_profile.png"
+        }

@@ -20,7 +20,7 @@ function login() {
 
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
-   
+
     //check if the fields are full
     if (username == '' || password == '') {
         alert("יש להכניס שם משתמש וסיסמא");
@@ -49,13 +49,20 @@ function login() {
         return; // Stop login process
     }
 
-    user.preDate=user.currentDate;
-    user.currentDate=new Date;
+    user.preDate = user.currentDate;
+    user.currentDate = new Date;
 
     // Successful login
     localStorage.setItem('currentUser', JSON.stringify(user));
     alert('נכנסת בהצלחה!');
 
+
+    if (user.gender == "זכר") {
+        window.parent.document.getElementById("profile-img-header").src = "../img/boy_profile.png"
+    }
+    else {
+        window.parent.document.getElementById("profile-img-header").src = "../img/girl_profile.png"
+    }
 
     loginDiv.style.visibility = "hidden";
     body.style.pointerEvents = 'auto';
@@ -67,7 +74,7 @@ function blockLogin() {
     document.getElementById('login-button').disabled = true;
     blockLoginTimer = setTimeout(function () {
         document.getElementById('login-button').disabled = false;
-        document.getElementById('login-button').style.backgroundColor='blue';
+        document.getElementById('login-button').style.backgroundColor = 'blue';
         document.getElementById('error-message').style.display = 'none';
         loginAttempts = 0; // Reset login attempts counter
     }, 30000); // Blocked for 0.5 minute

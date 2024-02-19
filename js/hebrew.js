@@ -58,7 +58,16 @@ userNamePlace.textContent=userName;
 levelLabel.textContent="רמה "+level;
 stageLabel.textContent="שלב "+stage;
 pointsLabel.textContent=userScore;
-rate.textContent=calcRate();
+// rate.textContent=calcRate();
+
+//if the user end the game in the past
+if (stage == endGame + 1) {
+    nextLevText.textContent = "כל הכבוד! סיימת את המשחק בהצלחה"
+    nextLevelDiv.style.visibility = "visible";
+    butt = document.getElementById("nextLeButton");
+    butt.style.visibility = "hidden";
+    startButton.style.visibility="hidden";
+};
 
 //creating an array of images for the current stage
 function createArr() {

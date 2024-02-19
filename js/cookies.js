@@ -11,7 +11,7 @@ function setCookie(name, value, minutes) {
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
-// Get the value of a cookie by name
+// get the value of the cookie by its name
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -28,6 +28,7 @@ function checkInactivity() {
     var inactivityTimeout = setTimeout(function () {
         deleteCookie("user_session"); // Delete the cookie
         localStorage.setItem('isConnected',false);
+        window.location.href = "../index.html";
     }, 0.5 * 60 * 1000);
 
     // reset the session cookie whenever there's user activity
